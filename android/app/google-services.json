@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "213214139394",
+    "firebase_url": "https://flutter-transport-29d9e.firebaseio.com",
+    "project_id": "flutter-transport-29d9e",
+    "storage_bucket": "flutter-transport-29d9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213214139394:android:679fe7cbe39acb7057431b",
+        "android_client_info": {
+          "package_name": "co.transportapp.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213214139394-uubdda06nsc4g929krvksctpnc00lrck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCotAYr16AsmXkEETHqa8iZ3UkGXNhHzFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213214139394-uubdda06nsc4g929krvksctpnc00lrck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
