@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_chat/constants.dart';
 class RegistrationScreen extends StatefulWidget {
+  static const String id = 'registration_screen';
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,16 +22,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: 200.0,
-              child: Image.asset('images/logo.png'),
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
+           
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
+               
               },
               decoration: InputDecoration(
                 hintText: 'Enter your email',
@@ -49,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+              password=value;
               },
               decoration: InputDecoration(
                 hintText: 'Enter your password',
@@ -71,6 +72,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(
               height: 24.0,
             ),
+           
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
@@ -79,7 +81,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Implement registration functionality.
+                  print(email);
+                  print(password);
                   },
                   minWidth: 200.0,
                   height: 42.0,

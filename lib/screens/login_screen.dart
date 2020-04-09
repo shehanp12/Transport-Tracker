@@ -7,6 +7,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+String email;
+String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+                  email=value;
               },
               decoration: InputDecoration(
                 hintText: 'Enter your email',
@@ -52,7 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               onChanged: (value) {
-                //Do something with the user input.
+                password=value;
+                
               },
               decoration: InputDecoration(
                 hintText: 'Enter your password.',
@@ -84,7 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Implement login functionality.
+                    print("email");
+                    print("password");
+                    
                   },
                   minWidth: 200.0,
                   height: 42.0,
