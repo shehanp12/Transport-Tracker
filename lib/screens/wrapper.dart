@@ -14,7 +14,7 @@ class Wrapper extends StatelessWidget {
     //return either welcome screen or map
     final user=Provider.of<User>(context);
     print(user);
-   /*  return WelcomeScreen(); */
+    /* return WelcomeScreen(); */
     
     if(user== null){
        return WelcomeScreen(); 
@@ -23,7 +23,7 @@ class Wrapper extends StatelessWidget {
     else{
       return SplashScreen();
        /* return WelcomeScreen();  */
-    }
+    } 
 
     
   }
