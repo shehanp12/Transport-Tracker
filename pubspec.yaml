@@ -13,6 +13,12 @@ dependencies:
   firebase_auth: ^0.15.5+3
   google_sign_in: ^4.4.1
   provider: ^3.1.0
+  google_maps_flutter: ^0.5.25+3
+  location: ^3.0.0
+  google_map_polyline: ^0.2.0+1
+  flutter_polyline_points: ^0.1.0
+  permission: ^0.1.7
+
 
 
 
