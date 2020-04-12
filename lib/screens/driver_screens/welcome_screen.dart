@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import '../../utils/firebase_auth.dart';
-
-/* import 'registration_screen.dart'; */
+ import 'registration_screen.dart'; 
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -28,6 +27,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   if(!res)
                     print("error logging in with google");
                 },
+              ),
+              Container(
+                child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const ListTile(
+              title: Text('Sign in with google if you have a google account,'),
+              subtitle: Text('If you havent register yet click Register button'),
+            ),
+            ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                  child: const Text('Register'),
+                  onPressed: () {
+                     Navigator.pushNamed(context,RegistrationScreen.id);
+                  },
+                ),
+               
+              ],
+            ),
+          ],
+        ),
+      ),
               ),
              Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0),

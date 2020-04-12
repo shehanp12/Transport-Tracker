@@ -22,20 +22,27 @@ class FlashChat extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
          RegistrationScreen.id: (context) => RegistrationScreen()
        },
-      theme: ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          body1: TextStyle(color: Colors.white10),
-        ),
-      ),
-         home: MainScreen() ,    
+      theme: ThemeData(
+    primaryColor: Colors.blue,
+    accentColor: Colors.green,
+    textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
+  ),
+  home:MainScreen(),
     );
+    
   }
 }
+      
+      
+  
+    
+  
+
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     return StreamBuilder(
+    /*  return StreamBuilder(
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (context,AsyncSnapshot<FirebaseUser> snapshot) {
         if(snapshot.connectionState == ConnectionState.waiting)
@@ -44,6 +51,6 @@ class MainScreen extends StatelessWidget {
           return LoginScreen();
         return  HomeScreen();
       },
-    );
+    ); */
   }
 }
