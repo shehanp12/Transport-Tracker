@@ -14,7 +14,10 @@ void main() => runApp(FlashChat());
 class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+      return StreamProvider<User>.value(
+      value: AuthProvider().user,
+      child: MaterialApp(
+        
       /*  initialRoute: Wrapper.id , */ 
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
@@ -29,13 +32,15 @@ class FlashChat extends StatelessWidget {
         accentColor: Colors.green,
         textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
       ),
-      home: MainScreen()
+      home: Wrapper(),
       
-    );
+    ),
+      
+      );
   }
 }
 
-class MainScreen extends StatelessWidget {
+/* class MainScreen extends StatelessWidget {
   //root of my application
   @override
   Widget build(BuildContext context) {
@@ -46,4 +51,4 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
-}
+} */
