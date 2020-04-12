@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import '../utils/firebase_auth.dart';
+import '../../utils/firebase_auth.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  
-  static const String id = 'registration_screen';
+class LoginScreen extends StatefulWidget {
+  static const String id = 'login_screen';
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
- TextEditingController _emailController;
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _emailController;
   TextEditingController _passwordController;
 
   @override
@@ -29,12 +28,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 100.0),
-              Text("Sign up", style: TextStyle(
+              Text("Login", style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0
               ),),
               const SizedBox(height: 20.0),
-              
+              RaisedButton(
+                child: Text("Login with Google"),
+                onPressed: () async {
+                  bool res = await AuthProvider().loginWithGoogle();
+                  if(!res)
+                    print("error logging in with google");
+                },
+              ),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -51,13 +57,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 10.0),
               RaisedButton(
-                child: Text("Sign up"),
+                child: Text("Login"),
                 onPressed: ()async {
                   if(_emailController.text.isEmpty || _passwordController.text.isEmpty) {
                     print("Email and password cannot be empty");
                     return;
                   }
-                  bool res = await AuthProvider().registerWithEmailAndPassword(_emailController.text, _passwordController.text);
+                  bool res = await AuthProvider().signInWithEmail(_emailController.text, _passwordController.text);
                   if(!res) {
                     print("Login failed");
                   }
@@ -69,4 +75,5 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
   }
+
 }

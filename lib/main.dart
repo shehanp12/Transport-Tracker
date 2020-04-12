@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flash_chat/screens/welcome_screen.dart';
-import 'package:flash_chat/screens/login_screen.dart';
-import 'package:flash_chat/screens/registration_screen.dart';
+import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
+import 'package:flash_chat/screens/driver_screens/login_screen.dart';
+import 'package:flash_chat/screens/driver_screens/registration_screen.dart';
 import 'package:flash_chat/screens/home_screen.dart';
 
 
