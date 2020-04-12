@@ -17,12 +17,12 @@ class Wrapper extends StatelessWidget {
    /*  return WelcomeScreen(); */
     
     if(user== null){
-      /* return WelcomeScreen(); */
-       return SplashScreen();
+       return WelcomeScreen(); 
+     /*   return SplashScreen(); */
     }
     else{
-      /* return SplashScreen(); */
-       return WelcomeScreen(); 
+      return SplashScreen();
+       /* return WelcomeScreen();  */
     }
 
     
