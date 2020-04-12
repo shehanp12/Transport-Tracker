@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import '../../utils/firebase_auth.dart';
- import 'registration_screen.dart'; 
+import 'registration_screen.dart'; 
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -10,6 +10,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  final AuthProvider _auth= AuthProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             RaisedButton(
                 child: Text("Login with Google"),
                 onPressed: () async {
-                  bool res = await AuthProvider().loginWithGoogle();
+                  bool res = await  _auth.loginWithGoogle();
                   if(!res)
                     print("error logging in with google");
                 },
