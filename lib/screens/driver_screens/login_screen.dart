@@ -33,14 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 20.0
               ),),
               const SizedBox(height: 20.0),
-              RaisedButton(
-                child: Text("Login with Google"),
-                onPressed: () async {
-                  bool res = await AuthProvider().loginWithGoogle();
-                  if(!res)
-                    print("error logging in with google");
-                },
-              ),
+              
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
