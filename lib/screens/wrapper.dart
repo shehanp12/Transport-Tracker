@@ -1,9 +1,8 @@
 import 'package:flash_chat/models/user.dart';
+import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
-import 'package:flash_chat/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-/* import 'package:flash_chat/utils/firebase_auth.dart'; */
 
 
 class Wrapper extends StatelessWidget {
@@ -14,16 +13,16 @@ class Wrapper extends StatelessWidget {
     //return either welcome screen or map
     final user=Provider.of<User>(context);
     print(user);
-    /* return WelcomeScreen(); */
+  
     
-    if(user== null){
+     if(user== null){
        return WelcomeScreen(); 
-     /*   return SplashScreen(); */
+     
     }
     else{
-      return SplashScreen();
-       /* return WelcomeScreen();  */
-    } 
+      return MapDriver();
+     
+    }  
 
     
   }
