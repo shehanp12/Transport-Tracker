@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "213214139394-rhp3i1bmab7ngvj0jsp58qgfaqrojlu5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.transportapp.android",
+            "certificate_hash": "c4a76af12b3c1cb1319b36c53b2728f24c3736ac"
+          }
+        },
+        {
           "client_id": "213214139394-uubdda06nsc4g929krvksctpnc00lrck.apps.googleusercontent.com",
           "client_type": 3
         }

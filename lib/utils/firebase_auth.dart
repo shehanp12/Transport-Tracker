@@ -31,6 +31,7 @@ class AuthProvider {
     }
   }
 
+ // sign out 
   Future<void> logOut() async {
     try {
       await _auth.signOut();
@@ -39,6 +40,8 @@ class AuthProvider {
     }
   }
 
+
+// register with google signIn
   Future<bool> loginWithGoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
@@ -58,7 +61,7 @@ class AuthProvider {
       return false;
     }
   }
-
+ //register with email and password
   Future registerWithEmailAndPassword(String email, String password) async{
     try{
        AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
