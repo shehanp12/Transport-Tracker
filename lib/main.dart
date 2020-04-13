@@ -32,7 +32,7 @@ class FlashChat1 extends StatelessWidget {
         accentColor: Colors.green,
         textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
       ),
-      home: Wrapper(),
+      home:HomeScreen(),
       
     ),
       
