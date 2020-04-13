@@ -60,6 +60,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 onPressed: () async{
                  if(_formKey.currentState.validate()){
+                   print('hello');
 
                  }
                 }
