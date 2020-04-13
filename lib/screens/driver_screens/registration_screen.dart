@@ -42,12 +42,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               }),
               SizedBox(height: 20),
               TextFormField(
-                  validator:(val)=> val.isEmpty ? 'Enter an password ':null,
+                  validator:(val)=> val.length<6 ? 'Enter an password 6+ chars long ':null,
                 obscureText: true,
                 onChanged: (val) {
                  setState(() {
                    password=val;
-                 });
+                 }); 
                 } 
               ),
                   SizedBox(height: 40),
