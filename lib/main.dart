@@ -9,9 +9,9 @@ import 'package:flash_chat/screens/splash_screen.dart';
 import 'package:flash_chat/models/user.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(FlashChat());
+void main() => runApp(FlashChat1());
 
-class FlashChat extends StatelessWidget {
+class FlashChat1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return StreamProvider<User>.value(
