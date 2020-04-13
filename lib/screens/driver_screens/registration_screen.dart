@@ -17,6 +17,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     //text field state
   String email ='';
   String password ='';
+  String error ='';
 
 
  
@@ -60,11 +61,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 onPressed: () async{
                  if(_formKey.currentState.validate()){
-                   print('hello');
+                   dynamic result=await _auth.registerWithEmailAndPassword(email, password);
+                   if(result ==null){
+                    setState(()=>error='please supply a valid email anddress');
+                   }
 
                  }
                 }
+              ),
+              SizedBox(height:12),
+              Text(
+                error,
+                style:TextStyle(color:Colors.red,fontSize:14)
               )
+
             ],
           ),
         ),

@@ -15,11 +15,11 @@ class MapDriver extends StatefulWidget {
 
   @override
   _MapDriverState createState() => _MapDriverState();
-}
+} 
 
 class _MapDriverState extends State<MapDriver> {
 
-   StreamSubscription _locationSubscription;
+ /*   StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
   Circle circle;
@@ -96,15 +96,15 @@ class _MapDriverState extends State<MapDriver> {
     super.dispose();
   }
 
-
+ */
   final AuthProvider _auth =AuthProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.title),
-        
+       /*  title: Text(widget.title),
+         */
         backgroundColor: Colors.blueAccent,
         elevation: 0,
         actions: <Widget>[
@@ -116,7 +116,7 @@ class _MapDriverState extends State<MapDriver> {
            )
         ],
       ),
-      body: GoogleMap(
+     /*  body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
         initialCameraPosition: initialLocation,
@@ -128,14 +128,15 @@ class _MapDriverState extends State<MapDriver> {
         
         
 
-      ),
+      ), */
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
           onPressed: () {
-            getCurrentLocation();
+         /*    getCurrentLocation(); */
           }),
 
 
     );
   }
 }
+
