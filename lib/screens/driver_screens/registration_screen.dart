@@ -9,59 +9,60 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
- TextEditingController _emailController;
-  TextEditingController _passwordController;
 
-  @override
-  void initState() {
-    super.initState();
-    _emailController = TextEditingController(text: "");
-    _passwordController = TextEditingController(text: "");
-  }
+   final AuthProvider _auth = AuthProvider();
 
+   final  _formKey=GlobalKey<FormState>();
+
+    //text field state
+  String email ='';
+  String password ='';
+
+
+ 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(
+        title: Text('Sign Up')
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+        child: Form(
+          key:_formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 100.0),
-              Text("Sign up", style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0
-              ),),
-              const SizedBox(height: 20.0),
-              
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                    hintText: "Enter email"
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: _passwordController,
+              SizedBox(height: 20),
+              TextFormField(
+                 validator:(val)=> val.isEmpty ? 'Enter an email address':null,
+                onChanged: (val) {
+                 setState(() {
+                    email = val;
+                  });
+              }),
+              SizedBox(height: 20),
+              TextFormField(
+                  validator:(val)=> val.isEmpty ? 'Enter an password ':null,
                 obscureText: true,
-                decoration: InputDecoration(
-                    hintText: "Enter password"
-                ),
+                onChanged: (val) {
+                 setState(() {
+                   password=val;
+                 });
+                } 
               ),
-              const SizedBox(height: 10.0),
+                  SizedBox(height: 40),
               RaisedButton(
-                child: Text("Sign up"),
-                onPressed: ()async {
-                  if(_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-                    print("Email and password cannot be empty");
-                    return;
-                  }
-                  bool res = await AuthProvider().registerWithEmailAndPassword(_emailController.text, _passwordController.text);
-                  if(!res) {
-                    print("Login failed");
-                  }
-                },
+                color:Colors.blueAccent,
+                child: Text(
+                  'Sign Up',
+                  style:TextStyle(color:Colors.white),
+
+                ),
+                onPressed: () async{
+                 if(_formKey.currentState.validate()){
+
+                 }
+                }
               )
             ],
           ),

@@ -8,21 +8,57 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController;
-  TextEditingController _passwordController;
+
+  final AuthProvider _auth = AuthProvider();
+
+  //text field state
+  String email ='';
+  String password ='';
 
   @override
-  void initState() {
-    super.initState();
-    _emailController = TextEditingController(text: "");
-    _passwordController = TextEditingController(text: "");
-  }
-
-  @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: 
+       appBar: AppBar(
+        title: Text('Sign In')
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20),
+              TextFormField(onChanged: (val) {
+                 setState(() {
+                    email = val;
+                  });
+
+              }),
+              SizedBox(height: 20),
+              TextFormField(
+                obscureText: true,
+                onChanged: (val) {
+                 setState(() {
+                   password=val;
+                 });
+                } 
+              ),
+                  SizedBox(height: 40),
+              RaisedButton(
+                color:Colors.blueAccent,
+                child: Text(
+                  'Sign In',
+                  style:TextStyle(color:Colors.white),
+
+                ),
+                onPressed: () async{
+                  print(email);
+                  print(password);
+                }
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
-
 }
