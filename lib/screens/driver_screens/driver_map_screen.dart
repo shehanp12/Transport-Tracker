@@ -26,8 +26,8 @@ class _MapDriverState extends State<MapDriver> {
   GoogleMapController _controller;
 
   static final CameraPosition initialLocation = CameraPosition(
-    target: LatLng(5.30385,23.4553),
-    zoom: 14.4746,
+    target: LatLng(6.8211, 80.0409),
+    zoom: 14.000,
   );
 //6.8211, 80.0409
   Future<Uint8List> getMarker() async {
@@ -76,7 +76,7 @@ class _MapDriverState extends State<MapDriver> {
               bearing: 192.8334901395799,
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
-              zoom: 18.00)));
+              zoom: 12.00)));
           updateMarkerAndCircle(newLocalData, imageData);
         }
       });
