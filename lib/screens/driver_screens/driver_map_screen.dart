@@ -76,7 +76,7 @@ class _MapDriverState extends State<MapDriver> {
               bearing: 192.8334901395799,
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
-              zoom: 12.00)));
+              zoom: 14.00)));
           updateMarkerAndCircle(newLocalData, imageData);
         }
       });
