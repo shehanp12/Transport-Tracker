@@ -1,10 +1,12 @@
-<<<<<<< HEAD
-import 'package:flash_chat/screens/driver_screens/LoginScreen.dart';
-import 'package:flash_chat/screens/driver_screens/Registation_Screen.dart';
-=======
->>>>>>> 4e421004da48d13ad3c3836dd4f374e8ef2917b6
-import 'package:flutter/material.dart';
 
+
+import 'package:flash_chat/screens/driver_screens/LoginScreen.dart';
+
+import 'package:flash_chat/screens/driver_screens/Registation_Screen.dart';
+
+
+
+import 'package:flutter/material.dart';
 import '../../utils/firebase_auth.dart';
 import 'registration_screen.dart'; 
 
