@@ -2,13 +2,14 @@ import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
-
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 
 class MapDriver extends StatefulWidget {
+
+   static const String id = 'driver_map_screen';
 
   MapDriver({Key key, this.title}) : super(key: key);
   final String title;

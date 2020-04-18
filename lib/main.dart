@@ -1,5 +1,7 @@
-import 'package:flash_chat/screens/driver_screens/newuser.page.dart';
-import 'package:flash_chat/screens/driver_screens/login.page.dart';
+import 'package:flash_chat/screens/driver_screens/LoginScreen.dart';
+import 'package:flash_chat/screens/driver_screens/Registation_Screen.dart';
+import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
+import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/home_screen.dart';
@@ -21,8 +23,10 @@ class FlashChat1 extends StatelessWidget {
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         SplashScreen.id: (context) => SplashScreen(),
-        LoginPage.id: (context) => LoginPage(),
-        NewUser.id: (context) => NewUser(),
+        LoginScreen.id: (context) => LoginScreen(),
+        WelcomeScreen.id: (context) =>WelcomeScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+       MapDriver.id: (context) =>  MapDriver(),
         Wrapper.id: (context) => Wrapper(),
       },
       theme: ThemeData(
