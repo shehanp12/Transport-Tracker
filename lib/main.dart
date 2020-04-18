@@ -1,11 +1,8 @@
 import 'package:flash_chat/screens/driver_screens/LoginScreen.dart';
-import 'package:flash_chat/screens/driver_screens/Registation_Screen.dart';
 import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
-import 'package:flash_chat/screens/driver_screens/login_screen.dart';
 import 'package:flash_chat/screens/driver_screens/registration_screen.dart';
 import 'package:flash_chat/screens/home_screen.dart';
 import 'package:flash_chat/utils/firebase_auth.dart';
