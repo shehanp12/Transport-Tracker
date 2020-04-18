@@ -16,26 +16,28 @@ class _PasswordInputState extends State<PasswordInput> {
       child: Container(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        child: TextFormField(
-          validator: (val)=> val.length<6 ? 'Enter an password 6+ chars long ':null,
-           obscureText: true, 
-            onChanged: (val){
-              setState(() {
-                password=val;
-              });
-            },
-          
+        child: Form(
+                  child: TextFormField(
+            validator: (val)=> val.length<6 ? 'Enter an password 6+ chars long ':null,
+             obscureText: true, 
+              onChanged: (val){
+                setState(() {
+                  password=val;
+                });
+              },
+            
 
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          
-          
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            labelText: 'Password',
-            labelStyle: TextStyle(
-              color: Colors.white70,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            
+            
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              labelText: 'Password',
+              labelStyle: TextStyle(
+                color: Colors.white70,
+              ),
             ),
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:flash_chat/screens/widget/password.dart';
 import 'package:flash_chat/screens/widget/singup.dart';
 import 'package:flash_chat/screens/widget/textNew.dart';
 import 'package:flash_chat/screens/widget/userOld.dart';
+import 'package:flash_chat/utils/firebase_auth.dart';
 
 
 

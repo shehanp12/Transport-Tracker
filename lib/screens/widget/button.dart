@@ -71,10 +71,12 @@ class _ButtonLoginState extends State<ButtonLogin> {
               Text(
                 error,
                 style:TextStyle(color:Colors.red,fontSize:14)
-              )
+              ),
+              
             ],
           ),
         ),
+        
         
       ),
     );

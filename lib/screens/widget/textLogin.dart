@@ -19,15 +19,7 @@ class _TextLoginState extends State<TextLogin> {
             Container(
               height: 60,
             ),
-            Center(
-              child: Text(
-                'Shehan kolukarayek',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+          
           ],
         ),
       ),

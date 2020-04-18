@@ -15,24 +15,26 @@ class _InputEmailState extends State<InputEmail> {
       child: Container(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        child: TextFormField(
-          validator:(val)=> val.isEmpty ? 'Enter an email address':null ,
+        child: Form(
+                  child: TextFormField(
+            validator:(val)=> val.isEmpty ? 'Enter an email address':null ,
 
-          onChanged: (val) {
-                 setState(() {
-                    email = val;
-                  });
+            onChanged: (val) {
+                   setState(() {
+                      email = val;
+                    });
 
-              },
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            fillColor: Colors.lightBlueAccent,
-            labelText: 'Email',
-            labelStyle: TextStyle(
-              color: Colors.white70,
+                },
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              fillColor: Colors.lightBlueAccent,
+              labelText: 'Email',
+              labelStyle: TextStyle(
+                color: Colors.white70,
+              ),
             ),
           ),
         ),
