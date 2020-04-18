@@ -12,15 +12,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.blueAccent, Colors.lightBlueAccent]
-            )
-          ),
-        
+      appBar: AppBar(
+        title: Text('Transport Tracker'), 
+      ),
+        body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,11 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.white,
+                color: Colors.lightBlueAccent,
                 borderRadius: BorderRadius.circular(30.0),
-                child: Container(
-                  
-                  child:MaterialButton(
+                child: MaterialButton(
                   onPressed: (){
                      Navigator.of(context).pushNamed( Wrapper.id);
                   },
@@ -44,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Driver ',
                   ),
                 )
-                ),
               ),
             ),
              Padding(
