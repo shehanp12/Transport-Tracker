@@ -1,7 +1,8 @@
+import 'package:flash_chat/screens/driver_screens/Registation_Screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import '../../utils/firebase_auth.dart';
-import 'registration_screen.dart'; 
+
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
