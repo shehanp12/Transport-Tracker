@@ -1,4 +1,4 @@
-import 'package:flash_chat/screens/driver_screens/LoginScreen.dart';
+import 'package:flash_chat/screens/driver_screens/login_screen.dart';
 import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/wrapper.dart';
@@ -26,7 +26,7 @@ class FlashChat1 extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         WelcomeScreen.id: (context) =>WelcomeScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
-       MapDriver.id: (context) =>  MapDriver(),
+        MapDriver.id: (context) =>  MapDriver(),
         Wrapper.id: (context) => Wrapper(),
       },
       theme: ThemeData(
