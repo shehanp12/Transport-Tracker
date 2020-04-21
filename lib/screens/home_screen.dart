@@ -13,11 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+          padding: const EdgeInsets.all(30.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              colors: [Colors.blueAccent, Colors.lightBlueAccent]
+              colors: [Colors.blue[50], Colors.lightBlueAccent]
             )
           ),
         
@@ -46,7 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
                 ),
               ),
-            ),
+              ),
+            
              Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
@@ -65,10 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               ),
+              
             ),
             
-            
-           
           ],
         ),
         
