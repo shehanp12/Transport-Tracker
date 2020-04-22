@@ -1,4 +1,5 @@
 import 'package:flash_chat/screens/driver_screens/login_screen.dart';
+import 'package:flash_chat/screens/driver_screens/regform.dart';
 import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/wrapper.dart';
@@ -38,7 +39,7 @@ class FlashChat1 extends StatelessWidget {
         textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
       ),
       /* home:HomeScreen(), */
-      home: HomeScreen(),
+      home: RegForm(),
       
     ),
       
