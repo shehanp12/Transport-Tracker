@@ -1,3 +1,4 @@
+import 'package:flash_chat/screens/driver_screens/regform.dart';
 import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -5,34 +6,33 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-
+import 'package:flash_chat/widgets/createHeader.dart';
 
 class MapDriver extends StatefulWidget {
-
-   static const String id = 'driver_map_screen';
+  static const String id = 'driver_map_screen';
 
   MapDriver({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
   _MapDriverState createState() => _MapDriverState();
-} 
+}
 
 class _MapDriverState extends State<MapDriver> {
-
-   StreamSubscription _locationSubscription;
+  StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
   Circle circle;
   GoogleMapController _controller;
 
   static final CameraPosition initialLocation = CameraPosition(
-    target: LatLng(5.30385,23.4553),
+    target: LatLng(5.30385, 23.4553),
     zoom: 14.4746,
   );
 //6.8211, 80.0409
   Future<Uint8List> getMarker() async {
-    ByteData byteData = await DefaultAssetBundle.of(context).load("images/car.png");
+    ByteData byteData =
+        await DefaultAssetBundle.of(context).load("images/car.png");
     return byteData.buffer.asUint8List();
   }
 
@@ -60,7 +60,6 @@ class _MapDriverState extends State<MapDriver> {
 
   void getCurrentLocation() async {
     try {
-
       Uint8List imageData = await getMarker();
       var location = await _locationTracker.getLocation();
 
@@ -70,18 +69,18 @@ class _MapDriverState extends State<MapDriver> {
         _locationSubscription.cancel();
       }
 
-
-      _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) {
+      _locationSubscription =
+          _locationTracker.onLocationChanged.listen((newLocalData) {
         if (_controller != null) {
-          _controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
-              bearing: 192.8334901395799,
-              target: LatLng(newLocalData.latitude, newLocalData.longitude),
-              tilt: 0,
-              zoom: 18.00)));
+          _controller.animateCamera(CameraUpdate.newCameraPosition(
+              new CameraPosition(
+                  bearing: 192.8334901395799,
+                  target: LatLng(newLocalData.latitude, newLocalData.longitude),
+                  tilt: 0,
+                  zoom: 18.00)));
           updateMarkerAndCircle(newLocalData, imageData);
         }
       });
-
     } on PlatformException catch (e) {
       if (e.code == 'PERMISSION_DENIED') {
         debugPrint("Permission Denied");
@@ -97,27 +96,63 @@ class _MapDriverState extends State<MapDriver> {
     super.dispose();
   }
 
- 
-  final AuthProvider _auth =AuthProvider();
+  final AuthProvider _auth = AuthProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-       /*  title: Text(widget.title),
+        /*  title: Text(widget.title),
          */
         backgroundColor: Colors.blueAccent,
         elevation: 0,
         actions: <Widget>[
-          FlatButton.icon(onPressed:() async{
-            await _auth.signOut();
-          },
-           icon: Icon(Icons.person), 
-           label: Text('logOut'),
-           )
+          FlatButton.icon(
+            onPressed: () async {
+              await _auth.signOut();
+            },
+            icon: Icon(Icons.lock),
+            label: Text('logOut'),
+          )
         ],
       ),
-       body: GoogleMap(
+      drawer: Drawer(
+          child: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            color: Theme.of(context).primaryColor,
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width:100,
+                    height:100,
+                    margin:EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image:DecorationImage(image:NetworkImage(''), 
+                      fit:BoxFit.fill
+                      ,)
+                    )
+
+                  ),
+                ],
+              ),
+            ),
+          ),
+          CreateHeader(Icons.person, 'Share my live location',()=>{} ),
+           CreateHeader(Icons.view_day, 'Create a shedule',()=>{
+               Navigator.of(context).pushNamed(RegForm.id)
+           } ),
+            CreateHeader(Icons.lock, 'logout',  () async {
+              await _auth.signOut();
+            }, ),
+
+        ],
+      )),
+      body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
         initialCameraPosition: initialLocation,
@@ -126,18 +161,12 @@ class _MapDriverState extends State<MapDriver> {
         onMapCreated: (GoogleMapController controller) {
           _controller = controller;
         },
-        
-        
-
-      ), 
+      ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
           onPressed: () {
-           getCurrentLocation(); 
+            getCurrentLocation();
           }),
-
-
     );
   }
 }
-
