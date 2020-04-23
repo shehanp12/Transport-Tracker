@@ -36,7 +36,7 @@ class _RegFormState extends State<RegForm> {
                 ),
                 //field*1
                 Padding(padding: EdgeInsets.only(top: 20.0)),
-                 TextFormField(
+                 TextField(
                       decoration:  InputDecoration(
                         labelText: "Enter Arival Time",
                         fillColor: Colors.white,
@@ -48,13 +48,13 @@ class _RegFormState extends State<RegForm> {
                         ),
                         //fillColor: Colors.green
                       ),
-                      validator: (val) {
+                      /* validator: (val) {
                         if(val.length==0) {
                           return "box cannot be empty";
                         }else{
                           return null;
                         }
-                      },
+                      } */
                     ),
                 Padding(padding: EdgeInsets.all(10.0)),
                  TextFormField(
@@ -142,7 +142,9 @@ class _RegFormState extends State<RegForm> {
                     ),    
                   Padding(padding: EdgeInsets.only(top: 10.0)),  
                  RaisedButton(
-                  onPressed: () { },
+                  onPressed: () {
+
+                   },
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
                   padding: const EdgeInsets.all(0.0),
                   child: Ink(
