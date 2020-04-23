@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-
+TextEditingController arivalInputController;
 
 class RegForm extends StatefulWidget {
   static const String id = 'Reg_Form';
   @override
   _RegFormState createState() => _RegFormState();
 }
+
+initState() {
+  arivalInputController = new TextEditingController();
+  
+  initState();
+}
+
 
 class _RegFormState extends State<RegForm> {
   
@@ -37,8 +44,11 @@ class _RegFormState extends State<RegForm> {
                 //field*1
                 Padding(padding: EdgeInsets.only(top: 20.0)),
                  TextField(
+                   autofocus: true,
+                   controller: arivalInputController,
                       decoration:  InputDecoration(
                         labelText: "Enter Arival Time",
+                        
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
