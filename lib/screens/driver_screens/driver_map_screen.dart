@@ -7,6 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flash_chat/widgets/createHeader.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 class MapDriver extends StatefulWidget {
   static const String id = 'driver_map_screen';
@@ -26,7 +32,7 @@ class _MapDriverState extends State<MapDriver> {
   GoogleMapController _controller;
 
   static final CameraPosition initialLocation = CameraPosition(
-    target: LatLng(5.30385, 23.4553),
+    target: LatLng(6.8211, 80.0409),
     zoom: 14.4746,
   );
 //6.8211, 80.0409
@@ -35,6 +41,17 @@ class _MapDriverState extends State<MapDriver> {
         await DefaultAssetBundle.of(context).load("images/car.png");
     return byteData.buffer.asUint8List();
   }
+
+   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
+void senddata(LocationData newLocalData){
+   
+ LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+        database.child("name_or_id_of_driver").set({
+   "latitude":latlng.latitude,
+   "longitude":latlng.longitude,
+   "id":"234",
+   });
+}
 
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
@@ -79,6 +96,8 @@ class _MapDriverState extends State<MapDriver> {
                   tilt: 0,
                   zoom: 18.00)));
           updateMarkerAndCircle(newLocalData, imageData);
+          senddata(newLocalData);
+          
         }
       });
     } on PlatformException catch (e) {
