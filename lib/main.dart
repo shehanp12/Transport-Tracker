@@ -10,6 +10,7 @@ import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flash_chat/screens/splash_screen.dart';
 import 'package:flash_chat/models/user.dart';
 import 'package:provider/provider.dart';
+import 'package:flash_chat/screens/user_screens/map_student.dart';
 
 
 void main() => runApp(FlashChat1());
@@ -30,7 +31,8 @@ class FlashChat1 extends StatelessWidget {
         RegistrationScreen.id: (context) => RegistrationScreen(),
         MapDriver.id: (context) =>  MapDriver(),
         Wrapper.id: (context) => Wrapper(),
-        RegForm.id: (context) => RegForm()
+        RegForm.id: (context) => RegForm(),
+        MyHomePage.id: (context) => MyHomePage(),
 
       },
       theme: ThemeData(
@@ -38,7 +40,7 @@ class FlashChat1 extends StatelessWidget {
         accentColor: Colors.green,
         textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
       ),
-      home:HomeScreen(),
+      home:MapDriver(),
       /* home: RegForm(), */
       
     ),

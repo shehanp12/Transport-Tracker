@@ -9,6 +9,9 @@ import 'package:location/location.dart';
 
 
 class MyHomePage extends StatefulWidget {
+ 
+ static const String id = 'map_student';
+
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
