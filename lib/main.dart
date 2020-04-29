@@ -10,7 +10,7 @@ import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flash_chat/screens/splash_screen.dart';
 import 'package:flash_chat/models/user.dart';
 import 'package:provider/provider.dart';
-import 'package:flash_chat/screens/user_screens/map_student.dart';
+ import 'package:flash_chat/screens/user_screens/map_student.dart'; 
 
 
 void main() => runApp(FlashChat1());
@@ -32,7 +32,7 @@ class FlashChat1 extends StatelessWidget {
         MapDriver.id: (context) =>  MapDriver(),
         Wrapper.id: (context) => Wrapper(),
         RegForm.id: (context) => RegForm(),
-        MyHomePage.id: (context) => MyHomePage(),
+       MyHomePage.id: (context) => MyHomePage(), 
 
       },
       theme: ThemeData(
@@ -40,7 +40,7 @@ class FlashChat1 extends StatelessWidget {
         accentColor: Colors.green,
         textTheme: TextTheme(body1: TextStyle(color: Colors.purple)),
       ),
-      home:MapDriver(),
+      home:HomeScreen(),
       /* home: RegForm(), */
       
     ),
@@ -49,15 +49,4 @@ class FlashChat1 extends StatelessWidget {
   }
 }
 
-/* class MainScreen extends StatelessWidget {
-  //root of my application
-  @override
-  Widget build(BuildContext context) {
-    return StreamProvider<User>.value(
-      value: AuthProvider().user,
-      child: MaterialApp(
-        home: Wrapper(),
-      ),
-    );
-  }
-} */
+

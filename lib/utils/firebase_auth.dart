@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user.dart';
+import './database.dart';
 
 
 class AuthProvider {
@@ -15,13 +16,14 @@ class AuthProvider {
     return _auth.onAuthStateChanged
     //.map((FirebaseUser user)) => _userFromFirebaseUser(user));
     .map(_userFromFirebaseUser);
-  }
+  } 
 
 //sign in with email and password
   Future  signInWithEmailAndPassword(String email, String password) async{
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email,password: password);
       FirebaseUser user = result.user;
+      await DatabaseService(uid: user.uid).updateUserData();
      return _userFromFirebaseUser(user);
     } catch (e) {
     print(e.toString());
@@ -44,6 +46,8 @@ class AuthProvider {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
       GoogleSignInAccount account = await googleSignIn.signIn();
+      
+      
       if(account == null )
         return false;
       AuthResult res = await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
@@ -52,6 +56,7 @@ class AuthProvider {
       ));
       if(res.user == null)
         return false;
+     
       return true;
     } catch (e) {
       print(e.message);
@@ -64,6 +69,7 @@ class AuthProvider {
     try{
        AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+        await DatabaseService(uid: user.uid).updateUserData();
       return _userFromFirebaseUser(user);
 
     }

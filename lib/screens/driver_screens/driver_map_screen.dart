@@ -10,7 +10,10 @@ import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 
+
 class MapDriver extends StatefulWidget {
+  
+
   static const String id = 'driver_map_screen';
 
   MapDriver({Key key, this.title}) : super(key: key);
@@ -21,6 +24,8 @@ class MapDriver extends StatefulWidget {
 }
 
 class _MapDriverState extends State<MapDriver> {
+  
+
   StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
@@ -42,12 +47,17 @@ class _MapDriverState extends State<MapDriver> {
 void senddata(LocationData newLocalData){
    
  LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
-        database.child("name_or_id_of_driver").set({
+        database.child("a").set({
    "latitude":latlng.latitude,
    "longitude":latlng.longitude,
    "id":"234",
    });
 }
+
+void inputData() async {
+  
+    // here you write the codes to input the data into firestore
+  }
 
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
@@ -175,7 +185,7 @@ void senddata(LocationData newLocalData){
         circles: Set.of((circle != null) ? [circle] : []),
         onMapCreated: (GoogleMapController controller) {
           _controller = controller;
-        },
+        }
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
