@@ -166,12 +166,10 @@ DatabaseReference longi= longitude.value;
                     width:100,
                     height:100,
                     margin:EdgeInsets.all(30),
-                    decoration: BoxDecoration(
+                  /*   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      image:DecorationImage(image:NetworkImage(''), 
-                      fit:BoxFit.fill
-                      ,)
-                    )
+                     
+                    ) */
 
                   ),
                 ],
