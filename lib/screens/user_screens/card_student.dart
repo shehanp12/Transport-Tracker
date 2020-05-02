@@ -14,12 +14,17 @@ class CardStudent extends StatefulWidget {
 class _CardStudentState extends State<CardStudent> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
+    return StreamProvider<List<Transport>>.value(
+      value:DatabaseService().transports,
+          child: Scaffold(
          appBar: AppBar(
           title: Text('Shedule')
         ),
-        body: TransportList()
+        body: TransportList(),
+          
+          
+        
+      ),
     );
   }
 }
