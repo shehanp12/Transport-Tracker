@@ -36,8 +36,8 @@ final transports =Provider.of<List<Transport>>(context);
      return ListView.builder(
       itemCount: transports.length,
       itemBuilder:(context,index){
-        return TransportTile(transport:transports[index]);
-
+      /*   return TransportTile();
+ */
       } ,
  
 
