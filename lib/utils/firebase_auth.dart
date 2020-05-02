@@ -23,7 +23,7 @@ class AuthProvider {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email,password: password);
       FirebaseUser user = result.user;
-      await DatabaseService(uid: user.uid).updateUserData();
+      // await DatabaseService(uid: user.uid).updateUserData();
      return _userFromFirebaseUser(user);
     } catch (e) {
     print(e.toString());
@@ -46,7 +46,7 @@ class AuthProvider {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
       GoogleSignInAccount account = await googleSignIn.signIn();
-      
+       
       
       if(account == null )
         return false;
@@ -69,7 +69,7 @@ class AuthProvider {
     try{
        AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-        await DatabaseService(uid: user.uid).updateUserData();
+        await DatabaseService(uid: user.uid).updateUserData("12","34","Shehan","23334");
       return _userFromFirebaseUser(user);
 
     }

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:flash_chat/widgets/createHeader.dart';
+import 'package:flash_chat/screens/user_screens/card_student.dart'; 
+
 
 
 
@@ -138,10 +141,47 @@ DatabaseReference longi= longitude.value;
  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+      return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.title),
+        /*  title: Text(widget.title),
+         */
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+        actions: <Widget>[
+         
+        ],
       ),
+      drawer: Drawer(
+          child: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            color: Theme.of(context).primaryColor,
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width:100,
+                    height:100,
+                    margin:EdgeInsets.all(30),
+                  /*   decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                     
+                    ) */
+
+                  ),
+                ],
+              ),
+            ),
+          ),
+          CreateHeader(Icons.person, 'Developed By',()=>{
+             Navigator.of(context).pushNamed(CardStudent.id)
+          } ),
+           CreateHeader(Icons.view_day, 'Shedule ',()=>{} ),     
+        ],
+      )),
       body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
