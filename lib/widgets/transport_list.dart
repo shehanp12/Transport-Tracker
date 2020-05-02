@@ -13,27 +13,35 @@ class _TransportListState extends State<TransportList> {
   Widget build(BuildContext context) {
 
 final transports =Provider.of<List<Transport>>(context);
-  // print(transports);
-transports.forEach((transport){
+  print(transports);
+/*transports.forEach((transport){
   // print(transport);
   print(transport.departureTime);
   print(transport.busName);
   // print(transport.telephone);
 
 
+ });  */
 
- }); 
- return Container();
+ /* transports((value) => value.forEach((transport){
+  // print(transport);
+  print(transport.departureTime);
+  print(transport.busName);
+  print(transport.telephone);
 
-    /* return ListView.builder(
+
+ }));  */
+ /* return Container(); */
+
+     return ListView.builder(
       itemCount: transports.length,
       itemBuilder:(context,index){
-        return TransportTile();
+        return TransportTile(transport:transports[index]);
 
       } ,
-
+ 
 
       
-    ); */
+    ); 
   }
 }
