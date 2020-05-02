@@ -15,9 +15,9 @@ import 'package:flash_chat/screens/user_screens/card_student.dart';
 
 
 
-void main() => runApp(MyBus());
+void main() => runApp(Flashchat1());
 
-class MyBus extends StatelessWidget {
+class Flashchat1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return StreamProvider<User>.value(

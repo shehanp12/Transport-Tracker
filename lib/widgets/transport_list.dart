@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flash_chat/models/transport.dart';
-import 'package:flash_chat/screens/user_screens/transport_tile.dart';
+
 
 class TransportList extends StatefulWidget {
   @override
