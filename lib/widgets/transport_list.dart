@@ -14,26 +14,29 @@ class _TransportListState extends State<TransportList> {
   Widget build(BuildContext context) {
 
 final transports = DatabaseService().transportListFromSnapshots;
+final a=transports.toString();
+
+
+
+
+
   // print(transports);
 transports.then((value) => value.forEach((transport){
   // print(transport);
   print(transport.departureTime);
   print(transport.busName);
-  // print(transport.telephone);
+  print(transport.telephone);
 
 
  })); 
- return Container();
 
-    /* return ListView.builder(
-      itemCount: transports.length,
+ 
+ /* return Container(); */
+    return ListView.builder(   
+      itemCount: a.length,
       itemBuilder:(context,index){
         return TransportTile();
-
-      } ,
-
-
-      
-    ); */
+      } 
+    );
   }
 }
