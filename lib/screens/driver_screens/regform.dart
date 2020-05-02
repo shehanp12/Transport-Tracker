@@ -111,7 +111,7 @@ class _RegFormState extends State<RegForm> {
                  Padding(padding: EdgeInsets.all(10.0)),
                  TextFormField(
                       decoration:  InputDecoration(
-                        labelText: "Enter bus ",
+                        labelText: "Enter bus Number",
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
