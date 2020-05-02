@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flash_chat/models/transport.dart';
 import 'package:flash_chat/screens/user_screens/transport_tile.dart';
+import 'package:flash_chat/utils/database.dart';
 
 class TransportList extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class _TransportListState extends State<TransportList> {
   @override
   Widget build(BuildContext context) {
 
-<<<<<<< HEAD
 final transports = DatabaseService().transportListFromSnapshots;
 final a=transports.toList();
 
@@ -20,24 +20,15 @@ final a=transports.toList();
 
 
 
-=======
-final transports =Provider.of<List<Transport>>(context);
->>>>>>> parent of 72862c9... wer
   // print(transports);
-transports.forEach((transport){
+transports.then((value) => value.forEach((transport){
   // print(transport);
   print(transport.departureTime);
   print(transport.busName);
   print(transport.telephone);
 
 
-<<<<<<< HEAD
  })); 
-=======
-
- }); 
- return Container();
->>>>>>> parent of 72862c9... wer
 
  
  /* return Container(); */

@@ -26,24 +26,24 @@ class DatabaseService {
   }
 
 //get transport stream
-Stream<List<Transport>> get transports{
-  return transportCollection.snapshots().map(_transportListFromSnapshots); 
-    
-}
+
+
+
 
 //transport list from snapshots
-List<Transport> _transportListFromSnapshots(QuerySnapshot snapshot) {
-  return snapshot.documents.map((doc){
-    return Transport(
-      arivalTime:doc.data['arivalTime'] ?? '',
-      departureTime:doc.data['departureTime'] ?? '',
-      busName:doc.data['busName'] ?? '',
-      telephone:doc.data['telephone'] ?? '',
-
-
-    );
-
-  }).toList();
+Future<List<Transport>> get transportListFromSnapshots async {
+  var  transList = new List<Transport>();
+  await transportCollection.snapshots().first.then((value){
+    value.documents.forEach((doc){
+      transList.add(Transport(
+      arivalTime:doc.data['Arival time'] ?? '',
+      departureTime:doc.data['Departure time'] ?? '',
+      busName:doc.data['Bus Name'] ?? '',
+      telephone:doc.data['Telephone Number'] ?? '',
+    ));
+    });
+  });
+  return transList;
 }
 
 
