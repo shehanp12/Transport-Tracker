@@ -14,7 +14,7 @@ class _TransportListState extends State<TransportList> {
   Widget build(BuildContext context) {
 
 final transports = DatabaseService().transportListFromSnapshots;
-final a=transports.toList();
+final a=transports.toString();
 
 
 
@@ -35,7 +35,7 @@ transports.then((value) => value.forEach((transport){
     return ListView.builder(   
       itemCount: a.length,
       itemBuilder:(context,index){
-        return TransportTile(transport:a[index]);
+        return TransportTile();
       } 
     );
   }
