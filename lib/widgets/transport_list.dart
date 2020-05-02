@@ -13,6 +13,7 @@ class _TransportListState extends State<TransportList> {
   Widget build(BuildContext context) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 final transports = DatabaseService().transportListFromSnapshots;
 final a=transports.toList();
 
@@ -20,6 +21,9 @@ final a=transports.toList();
 
 
 
+=======
+final transports =Provider.of<List<Transport>>(context);
+>>>>>>> parent of 72862c9... wer
 =======
 final transports =Provider.of<List<Transport>>(context);
 >>>>>>> parent of 72862c9... wer
@@ -32,8 +36,11 @@ transports.forEach((transport){
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  })); 
 =======
+=======
+>>>>>>> parent of 72862c9... wer
 
  }); 
  return Container();
