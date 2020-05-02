@@ -31,7 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Circle circle;
   GoogleMapController _controller;
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-  
+  void lat;
+  void longi;
 
 
 
@@ -44,32 +45,41 @@ class _MyHomePageState extends State<MyHomePage> {
     ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/car.png");
     return byteData.buffer.asUint8List();
   }
-void readdate(){
-  //driver2 want to 
-database.child("driver2").child("latitude").once().then((DataSnapshot dataSnapshot){
 
-DatabaseReference lat = dataSnapshot.value;
-print(lat);
+  void getlatitude() async{
   
-});
-database.child("driver2").child("longitude").once().then((DataSnapshot longitude){
+    
+     lat=(await FirebaseDatabase.instance.reference().child('drivertest').child('driver2').child('latitude').once()).value;
 
-DatabaseReference longi= longitude.value;
- print(longi);
-});
+
+return lat;
+  }
+  
+  void getlongitude() async{
+   longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('driver2').child('longitude').once()).value;
+
+  return longi;
 }
-
 
 //
 
 
 
-  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,) {
-    LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
+
+
+
+
+   print(lat);
+   print(longi);
+
+
+
+    LatLng location=  new LatLng(lat, longi);
     this.setState(() {
       marker = Marker(
           markerId: MarkerId("home"),
-          position:latlng,
+          position:location,
           rotation: newLocalData.heading,
           draggable: false,
           zIndex: 2,
@@ -81,7 +91,7 @@ DatabaseReference longi= longitude.value;
           radius: newLocalData.accuracy,
           zIndex: 1,
           strokeColor: Colors.blue,
-          center: latlng,
+          center: location,
           fillColor: Colors.blue.withAlpha(70));
     });
   }
@@ -96,7 +106,7 @@ DatabaseReference longi= longitude.value;
       Uint8List imageData = await getMarker();
       var location = await _locationTracker.getLocation();
  
-      updateMarkerAndCircle(location, imageData);
+      updateMarkerAndCircle(location, imageData,lat,longi);
       
 
 
@@ -112,8 +122,8 @@ DatabaseReference longi= longitude.value;
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
               zoom: 12.00)));
-          updateMarkerAndCircle(newLocalData, imageData);
-          readdate();
+          updateMarkerAndCircle(newLocalData, imageData,lat,longi);
+          
           
           
           
