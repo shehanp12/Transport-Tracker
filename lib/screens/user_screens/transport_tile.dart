@@ -1,14 +1,16 @@
-import 'package:flash_chat/widgets/transport_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/models/transport.dart'; 
 
-class TransportTile extends StatelessWidget {
+class TransportTile extends StatefulWidget {
 
    final  Transport transport;
   TransportTile({this.transport});
 
- 
+  @override
+  _TransportTileState createState() => _TransportTileState();
+}
 
+class _TransportTileState extends State<TransportTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +22,8 @@ class TransportTile extends StatelessWidget {
             radius:25,
             backgroundColor: Colors.blue
           ),
-          
+          title:Text(widget.transport.arivalTime),
+          subtitle: Text( widget.transport.busName),
          
           
 
