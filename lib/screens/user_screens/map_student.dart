@@ -46,7 +46,7 @@ var longi;
   );
 //6.8211, 80.0409
   Future<Uint8List> getMarker() async {
-    ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/car.png");
+    ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/car_icon.png");
     return byteData.buffer.asUint8List();
   }
 
@@ -173,8 +173,45 @@ void getlongitude() async{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        /*  title: Text(widget.title),
+         */
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+        actions: <Widget>[
+         
+        ],
       ),
+      drawer: Drawer(
+          child: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            color: Theme.of(context).primaryColor,
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width:100,
+                    height:100,
+                    margin:EdgeInsets.all(30),
+                  /*   decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                     
+                    ) */
+
+                  ),
+                ],
+              ),
+            ),
+          ),
+          CreateHeader(Icons.person, 'Developed By',()=>{
+             Navigator.of(context).pushNamed(CardStudent.id)
+          } ),
+           CreateHeader(Icons.view_day, 'Shedule ',()=>{} ),     
+        ],
+      )),
+    
       body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,

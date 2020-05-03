@@ -10,7 +10,7 @@ class DatabaseService {
   //collection reference 
   final CollectionReference transportCollection=Firestore.instance.collection('transport');
 
-  Future updateUserData(
+  Future<void> updateUserData(
     String arivalTime,
     String departureTime,
     String busName,

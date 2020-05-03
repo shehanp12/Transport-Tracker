@@ -1,3 +1,4 @@
+import 'package:flash_chat/screens/user_screens/transport_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flash_chat/models/transport.dart';
@@ -33,15 +34,13 @@ final transports =Provider.of<List<Transport>>(context);
  }));  */
  /* return Container(); */
 
-     return ListView.builder(
-      itemCount: transports.length,
-      itemBuilder:(context,index){
-      /*   return TransportTile();
- */
-      } ,
- 
 
-      
+       return ListView.builder(
+      itemCount: transports.length,
+      itemBuilder: (context, index) {
+        return TransportTile(transport: transports[index]);
+      },
     ); 
+    
   }
 }
