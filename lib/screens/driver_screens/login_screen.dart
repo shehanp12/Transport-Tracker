@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/firebase_auth.dart';
+import 'package:flash_chat/screens/shared/loading_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -11,6 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final AuthProvider _auth = AuthProvider();
      final  _formKey=GlobalKey<FormState>();
+     bool loading = false;
 
   //text field state
   String email ='';
@@ -20,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() :Scaffold(
        appBar: AppBar(
         title: Text('Sign In')
       ),
@@ -62,9 +64,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async{
                   
                   if(_formKey.currentState.validate()){
+                    setState(() {
+                      loading =true;
+                    });
                    dynamic result=await  _auth.signInWithEmailAndPassword(email, password);
                    if(result ==null){
-                    setState(()=>error='could not sign with email and password');
+                       setState(() {
+                      error='could not sign with email and password';
+                      loading =false;
+                    });
+                     
+                   /*  setState(()=>error='could not sign with email and password'); */
                    }
 
                  }

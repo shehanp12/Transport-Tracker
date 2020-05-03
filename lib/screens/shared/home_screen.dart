@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/wrapper.dart';
+import 'wrapper.dart';
 import 'package:flash_chat/screens/user_screens/map_student.dart'; 
 
 class HomeScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: ()  {
-                       Navigator.of(context).pushNamed(MyHomePage.id);
+                       Navigator.of(context).pushNamed(  MyHomePage.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,

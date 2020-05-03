@@ -1,22 +1,19 @@
-import 'dart:async';
+ import 'dart:async';
+import 'dart:convert';
 import 'dart:typed_data';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:flash_chat/widgets/createHeader.dart';
-import 'package:flash_chat/screens/user_screens/card_student.dart'; 
-
-
 
 
 class MyHomePage extends StatefulWidget {
- 
- static const String id = 'map_student';
-
+   static const String id = 'myhome';
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
+
 
 
 
@@ -31,8 +28,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Circle circle;
   GoogleMapController _controller;
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-  void lat;
-  void longi;
+  var lat;
+var longi;
+
 
 
 
@@ -46,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return byteData.buffer.asUint8List();
   }
 
+
   void getlatitude() async{
   
     
@@ -53,19 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 return lat;
-  }
+
   
-  void getlongitude() async{
+  /*
+database.child("driver2").child("latitude").once().then((DataSnapshot dataSnapshot){
+var lat=dataSnapshot.value;
+print(lat);
+});
+database.child("driver2").child("longitude").once().then((DataSnapshot longitude){
+
+var longi= longitude.value;
+print(longi);
+  
+});
+*/
+
+
+}
+
+void getlongitude() async{
    longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('driver2').child('longitude').once()).value;
 
   return longi;
 }
 
-//
-
-
-
-   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
+  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
 
 
 
@@ -93,13 +104,15 @@ return lat;
           strokeColor: Colors.blue,
           center: location,
           fillColor: Colors.blue.withAlpha(70));
-    });
+
+});
   }
 
     
 
 
   void getCurrentLocation() async {
+
     
     try {
 
@@ -114,7 +127,6 @@ return lat;
         _locationSubscription.cancel();
       }
 
-
       _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) {
         if (_controller != null) {
           _controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
@@ -122,9 +134,11 @@ return lat;
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
               zoom: 12.00)));
-          updateMarkerAndCircle(newLocalData, imageData,lat,longi);
+          updateMarkerAndCircle(location, imageData,lat,longi);
+          getlatitude();
+          getlongitude();
           
-          
+         
           
           
         }}
@@ -151,47 +165,10 @@ return lat;
  
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-      backgroundColor: Colors.white,
+    return Scaffold(
       appBar: AppBar(
-        /*  title: Text(widget.title),
-         */
-        backgroundColor: Colors.blueAccent,
-        elevation: 0,
-        actions: <Widget>[
-         
-        ],
+        title: Text(widget.title),
       ),
-      drawer: Drawer(
-          child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width:100,
-                    height:100,
-                    margin:EdgeInsets.all(30),
-                  /*   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                     
-                    ) */
-
-                  ),
-                ],
-              ),
-            ),
-          ),
-          CreateHeader(Icons.person, 'Developed By',()=>{
-             Navigator.of(context).pushNamed(CardStudent.id)
-          } ),
-           CreateHeader(Icons.view_day, 'Shedule ',()=>{} ),     
-        ],
-      )),
       body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
