@@ -1,4 +1,4 @@
- import 'dart:async';
+import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,10 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:flash_chat/widgets/createHeader.dart';
+import 'package:flash_chat/screens/user_screens/card_student.dart'; 
 
 
 class MyHomePage extends StatefulWidget {
-   static const String id = 'myhome';
+
+   static const String id = 'map_student';
+
+
+
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
@@ -28,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Circle circle;
   GoogleMapController _controller;
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-  var lat;
+var lat;
 var longi;
 
 
@@ -82,7 +88,7 @@ void getlongitude() async{
 
 
    print(lat);
-   print(longi);
+  print(longi);
 
 
 
