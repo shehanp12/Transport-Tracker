@@ -2,17 +2,17 @@ import 'package:flash_chat/screens/driver_screens/login_screen.dart';
 import 'package:flash_chat/screens/driver_screens/regform.dart';
 import 'package:flash_chat/screens/driver_screens/welcome_screen.dart';
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
-import 'file:///F:/ionic_android/flutter_transport_android/flutter_transport_android/lib/screens/shared/wrapper.dart';
+import 'file:///Users/Binura/Documents/GitHub/flutter_transport_android/lib/screens/shared/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/driver_screens/registration_screen.dart';
-import 'file:///F:/ionic_android/flutter_transport_android/flutter_transport_android/lib/screens/shared/home_screen.dart';
+import 'file:///Users/Binura/Documents/GitHub/flutter_transport_android/lib/screens/shared/home_screen.dart';
 import 'package:flash_chat/utils/firebase_auth.dart';
-import 'file:///F:/ionic_android/flutter_transport_android/flutter_transport_android/lib/screens/shared/splash_screen.dart';
+import 'file:///Users/Binura/Documents/GitHub/flutter_transport_android/lib/screens/shared/splash_screen.dart';
 import 'package:flash_chat/models/user.dart';
 import 'package:provider/provider.dart';
 import 'package:flash_chat/screens/user_screens/map_student.dart'; 
 import 'package:flash_chat/screens/user_screens/card_student.dart'; 
-import 'file:///F:/ionic_android/flutter_transport_android/flutter_transport_android/lib/screens/shared/loading_screen.dart';
+import 'file:///Users/Binura/Documents/GitHub/flutter_transport_android/lib/screens/shared/loading_screen.dart';
 
 
 
