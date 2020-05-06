@@ -12,7 +12,7 @@ import 'package:flash_chat/models/user.dart';
 import 'package:provider/provider.dart';
 import 'package:flash_chat/screens/user_screens/map_student.dart'; 
 import 'package:flash_chat/screens/user_screens/card_student.dart'; 
-import 'file:///F:/ionic_android/flutter_transport_android/flutter_transport_android/lib/screens/shared/loading_screen.dart';
+
 
 
 

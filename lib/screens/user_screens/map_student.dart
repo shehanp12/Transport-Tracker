@@ -46,7 +46,7 @@ var longi;
   );
 //6.8211, 80.0409
   Future<Uint8List> getMarker() async {
-    ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/car_icon.png");
+    ByteData byteData = await DefaultAssetBundle.of(context).load("images/car.png");
     return byteData.buffer.asUint8List();
   }
 
@@ -54,7 +54,7 @@ var longi;
   void getlatitude() async{
   
     
-     lat=(await FirebaseDatabase.instance.reference().child('drivertest').child('driver2').child('latitude').once()).value;
+     lat=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('latitude').once()).value;
 
 
 return lat;
@@ -77,7 +77,7 @@ print(longi);
 }
 
 void getlongitude() async{
-   longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('driver2').child('longitude').once()).value;
+   longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('longitude').once()).value;
 
   return longi;
 }
@@ -173,8 +173,8 @@ void getlongitude() async{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        /*  title: Text(widget.title),
-         */
+         title: Text("map my"),
+         
         backgroundColor: Colors.blueAccent,
         elevation: 0,
         actions: <Widget>[
