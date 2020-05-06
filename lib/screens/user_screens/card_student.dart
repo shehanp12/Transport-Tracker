@@ -3,7 +3,7 @@ import 'package:flash_chat/utils/database.dart';
 import 'package:provider/provider.dart'; 
 import 'package:flash_chat/widgets/transport_list.dart';
 import 'package:flash_chat/models/transport.dart';
-
+ 
 
 class CardStudent extends StatefulWidget {
   static const String id = 'Card_Student';

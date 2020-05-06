@@ -8,22 +8,22 @@ class TransportList extends StatefulWidget {
   @override
   _TransportListState createState() => _TransportListState();
 }
-
+ 
 class _TransportListState extends State<TransportList> {
   @override
   Widget build(BuildContext context) {
 
-final transports =Provider.of<List<Transport>>(context);
-  print(transports);
-/*transports.forEach((transport){
+final transports =Provider.of<List<Transport>>(context) ?? [];
+  /* print(transports); */
+ /* transports.forEach((transport){
   // print(transport);
   print(transport.departureTime);
   print(transport.busName);
   // print(transport.telephone);
 
 
- });  */
-
+ });  
+ */
  /* transports((value) => value.forEach((transport){
   // print(transport);
   print(transport.departureTime);
@@ -32,15 +32,15 @@ final transports =Provider.of<List<Transport>>(context);
 
 
  }));  */
- /* return Container(); */
-
-
+ /* return Container();
+ */
+  
        return ListView.builder(
       itemCount: transports.length,
       itemBuilder: (context, index) {
         return TransportTile(transport: transports[index]);
       },
-    ); 
+    );  
     
   }
 }

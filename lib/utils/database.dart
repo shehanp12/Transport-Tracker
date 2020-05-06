@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flash_chat/models/transport.dart';
+import 'package:flash_chat/models/user.dart';
 
 
 class DatabaseService {
@@ -49,6 +50,23 @@ Stream<List<Transport>> get transports{
   return transportCollection.snapshots().map(_transportListFromSnapshots); 
     
 }
+
+ UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      arivalTime: snapshot.data['Arival time'],
+       departureTime: snapshot.data['Departure time'],
+        busName: snapshot.data['Bus Name'],
+        telephone: snapshot.data['Telephone Number']
+
+     );
+  }
+
+  Stream<UserData> get userData {
+    return transportCollection.document(uid).snapshots()
+      .map(_userDataFromSnapshot);
+  }
+
 
 
 

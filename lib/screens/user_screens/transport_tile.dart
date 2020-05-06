@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/models/transport.dart'; 
 
 class TransportTile extends StatelessWidget{
-
+ 
    final  Transport transport;
   TransportTile({this.transport});
 
@@ -20,7 +20,11 @@ class TransportTile extends StatelessWidget{
             radius:25,
             backgroundColor: Colors.blue
           ),
-          title:Text(transport.busName),
+        trailing:Text(transport.busName),
+           title:Text(transport.arivalTime),
+          /*  isThreeLine: true, */
+           subtitle: Text(transport.departureTime),
+
          
          
           
