@@ -87,12 +87,12 @@ void getlongitude() async{
 
 
 
-   print(lat);
-  print(longi);
+ print(lat);
+ print(longi);
 
 
 
-    LatLng location=  new LatLng(lat, longi);
+    LatLng location=  new LatLng(lat,longi);
     this.setState(() {
       marker = Marker(
           markerId: MarkerId("home"),
