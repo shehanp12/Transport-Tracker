@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:typed_data';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,14 +11,15 @@ import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:flash_chat/screens/user_screens/card_student.dart'; 
 
 
-
-
 class MyHomePage extends StatefulWidget {
- 
- static const String id = 'map_student';
+
+   static const String id = 'map_student';
+
+
 
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
+
 
 
 
@@ -31,7 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Circle circle;
   GoogleMapController _controller;
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-  
+var lat;
+var longi;
+
 
 
 
@@ -41,35 +46,57 @@ class _MyHomePageState extends State<MyHomePage> {
   );
 //6.8211, 80.0409
   Future<Uint8List> getMarker() async {
-    ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/car.png");
+    ByteData byteData = await DefaultAssetBundle.of(context).load("images/car.png");
     return byteData.buffer.asUint8List();
   }
-void readdate(){
-  //driver2 want to 
-database.child("driver2").child("latitude").once().then((DataSnapshot dataSnapshot){
 
-DatabaseReference lat = dataSnapshot.value;
-print(lat);
+
+  void getlatitude() async{
   
+    
+     lat=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('latitude').once()).value;
+
+
+return lat;
+
+  
+  /*
+database.child("driver2").child("latitude").once().then((DataSnapshot dataSnapshot){
+var lat=dataSnapshot.value;
+print(lat);
 });
 database.child("driver2").child("longitude").once().then((DataSnapshot longitude){
 
-DatabaseReference longi= longitude.value;
- print(longi);
+var longi= longitude.value;
+print(longi);
+  
 });
+*/
+
+
 }
 
+void getlongitude() async{
+   longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('longitude').once()).value;
 
-//
+  return longi;
+}
+
+  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
 
 
 
-  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,) {
-    LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+
+ print(lat);
+ print(longi);
+
+
+
+    LatLng location=  new LatLng(lat,longi);
     this.setState(() {
       marker = Marker(
           markerId: MarkerId("home"),
-          position:latlng,
+          position:location,
           rotation: newLocalData.heading,
           draggable: false,
           zIndex: 2,
@@ -81,29 +108,30 @@ DatabaseReference longi= longitude.value;
           radius: newLocalData.accuracy,
           zIndex: 1,
           strokeColor: Colors.blue,
-          center: latlng,
+          center: location,
           fillColor: Colors.blue.withAlpha(70));
-    });
+
+});
   }
 
     
 
 
   void getCurrentLocation() async {
+
     
     try {
 
       Uint8List imageData = await getMarker();
       var location = await _locationTracker.getLocation();
  
-      updateMarkerAndCircle(location, imageData);
+      updateMarkerAndCircle(location, imageData,lat,longi);
       
 
 
       if (_locationSubscription != null) {
         _locationSubscription.cancel();
       }
-
 
       _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) {
         if (_controller != null) {
@@ -112,9 +140,11 @@ DatabaseReference longi= longitude.value;
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
               zoom: 12.00)));
-          updateMarkerAndCircle(newLocalData, imageData);
-          readdate();
+          updateMarkerAndCircle(location, imageData,lat,longi);
+          getlatitude();
+          getlongitude();
           
+         
           
           
         }}
@@ -141,11 +171,10 @@ DatabaseReference longi= longitude.value;
  
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-      backgroundColor: Colors.white,
+    return Scaffold(
       appBar: AppBar(
-        /*  title: Text(widget.title),
-         */
+         title: Text("map my"),
+         
         backgroundColor: Colors.blueAccent,
         elevation: 0,
         actions: <Widget>[
@@ -182,6 +211,7 @@ DatabaseReference longi= longitude.value;
            CreateHeader(Icons.view_day, 'Shedule ',()=>{} ),     
         ],
       )),
+    
       body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,

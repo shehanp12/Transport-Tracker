@@ -1,5 +1,5 @@
 
-import 'package:flash_chat/screens/home_screen.dart';
+import 'package:flash_chat/screens/shared/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 class SplashScreen extends StatefulWidget {

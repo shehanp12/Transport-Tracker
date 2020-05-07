@@ -1,4 +1,9 @@
+import 'package:flash_chat/screens/shared/loading_screen.dart';
+import 'package:flash_chat/utils/database.dart';
+import 'package:flash_chat/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 TextEditingController arivalInputController;
 
 class RegForm extends StatefulWidget {
@@ -7,188 +12,131 @@ class RegForm extends StatefulWidget {
   _RegFormState createState() => _RegFormState();
 }
 
-initState() {
-  arivalInputController = new TextEditingController();
-  
-  initState();
-}
-
-
 class _RegFormState extends State<RegForm> {
-  
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        padding: const EdgeInsets.all(30.0),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.blue[50], Colors.lightBlueAccent]
-            )
-          ),
-        child: Form(
-          child:Center(
-            child: Column(
-              children: <Widget>[
-                 Padding(padding: EdgeInsets.all(10.0)),
-                Text(
-                  'Shedule Register',
-                  style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  ),
-                ),
-                //field*1
-                Padding(padding: EdgeInsets.only(top: 20.0)),
-                 TextField(
-                   autofocus: true,
-                   controller: arivalInputController,
-                      decoration:  InputDecoration(
-                        labelText: "Enter Arival Time",
-                        
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            
-                          ),
-                        ),
-                        //fillColor: Colors.green
-                      ),
-                      /* validator: (val) {
-                        if(val.length==0) {
-                          return "box cannot be empty";
-                        }else{
-                          return null;
-                        }
-                      } */
-                    ),
-                Padding(padding: EdgeInsets.all(10.0)),
-                 TextFormField(
-                      decoration:  InputDecoration(
-                        labelText: "Enter Depature Time",
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            
-                          ),
-                        ),
-                        //fillColor: Colors.green
-                      ),
-                      validator: (val) {
-                        if(val.length==0) {
-                          return "box cannot be empty";
-                        }else{
-                          return null;
-                        }
-                      },
-                    ),
-                   Padding(padding: EdgeInsets.all(10.0)),
-                 TextFormField(
-                      decoration:  InputDecoration(
-                        labelText: "Enter Bus Name",
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            
-                          ),
-                        ),
-                        //fillColor: Colors.green
-                      ),
-                      validator: (val) {
-                        if(val.length==0) {
-                          return "box cannot be empty";
-                        }else{
-                          return null;
-                        }
-                      },
-                    ),
-                 Padding(padding: EdgeInsets.all(10.0)),
-                 TextFormField(
-                      decoration:  InputDecoration(
-                        labelText: "Enter bus Number",
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            
-                          ),
-                        ),
-                        //fillColor: Colors.green
-                      ),
-                      validator: (val) {
-                        if(val.length==0) {
-                          return "box cannot be empty";
-                        }else{
-                          return null;
-                        }
-                      },
-                    ), 
-                Padding(padding: EdgeInsets.only(top: 10.0)),
-                 TextFormField(
-                      decoration:  InputDecoration(
-                        labelText: "Enter Telephone number",
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            
-                          ),
-                        ),
-                        //fillColor: Colors.green
-                      ),
-                      validator: (val) {
-                        if(val.length==0) {
-                          return "box cannot be empty";
-                        }else{
-                          return null;
-                        }
-                      },
-                    ),    
-                  Padding(padding: EdgeInsets.only(top: 10.0)),  
-                 RaisedButton(
-                  onPressed: () {
+  final _formKey = GlobalKey<FormState>();
 
-                   },
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-                  padding: const EdgeInsets.all(0.0),
-                  child: Ink(
-                  decoration: BoxDecoration(
-                  boxShadow: [
-            BoxShadow(
-              color: Colors.blue[300],
-              blurRadius: 10.0, // has the effect of softening the shadow
-              spreadRadius: 1.0, // has the effect of extending the shadow
-              offset: Offset(
-                5.0, // horizontal, move right 10
-                5.0, // vertical, move down 10
-              ),
-            ),
-          ],
-          color: Colors.white38,
-          borderRadius: BorderRadius.circular(30),
-      
-               ),
-             child: Container(
-              constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0), // min sizes for Material buttons
-              alignment: Alignment.center,
-              child: const Text(
-                  'OK',
-              textAlign: TextAlign.center,
+  String _currentarivalTime;
+  String _departarivalTime;
+  String _currentbusName;
+  String _currenttelephone;
+
+  @override
+  Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
+
+    return  Scaffold(
+      body:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          StreamBuilder<UserData>(
+          stream: DatabaseService(uid: user.uid).userData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              UserData userData = snapshot.data;
+              return Form(
+                key: _formKey,
+                child: Center(
+                  child: Column(children: <Widget>[
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    Text(
+                      'Shedule Register',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                      ),
                     ),
-                   ),
-                  ),
-                )     
-              ]
-            ),
-          )
-        ),
-      ),
+                    //field*1
+                    Padding(padding: EdgeInsets.only(top: 20.0)),
+                    TextFormField(
+                      initialValue: userData.busName,
+                      validator: (val) =>
+                          val.isEmpty ? 'Please enter a busName' : null,
+                      onChanged: (val) => setState(() => _currentbusName = val),
+                      decoration: InputDecoration(
+                        labelText: "Enter Your Bus Name?",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(),
+                        ),
+                        //fillColor: Colors.green
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    TextFormField(
+                      initialValue: userData.arivalTime,
+                      decoration: InputDecoration(
+                        labelText: "Enter Your Arival Time?",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(),
+                        ),
+                        //fillColor: Colors.green
+                      ),
+                      validator: (val) =>
+                          val.isEmpty ? 'Please enter a name' : null,
+                      onChanged: (val) =>
+                          setState(() => _currentarivalTime = val),
+                    ),
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Enter Your Depature Time?",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(),
+                        ),
+                        //fillColor: Colors.green
+                      ),
+                      validator: (val) => val.isEmpty
+                          ? 'Please enter your departure Time?'
+                          : null,
+                      onChanged: (val) => setState(() => _departarivalTime = val),
+                    ),
+                    Padding(padding: EdgeInsets.all(10.0)),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Enter Your Telephone Number",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(),
+                        ),
+                        //fillColor: Colors.green
+                      ),
+                      validator: (val) => val.isEmpty
+                          ? 'Please enter your telephone number?'
+                          : null,
+                      onChanged: (val) => setState(() => _currenttelephone = val),
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 10.0)),
+
+                    Padding(padding: EdgeInsets.only(top: 10.0)),
+                    RaisedButton(onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        await DatabaseService(uid: user.uid).updateUserData(
+                            _currentarivalTime ?? snapshot.data.arivalTime,
+                            _departarivalTime ?? snapshot.data.departureTime,
+                            _currentbusName ?? snapshot.data.busName,
+                            _currenttelephone ?? snapshot.data.telephone);
+                        Navigator.pop(context);
+                      }
+                    })
+                  ]),
+                ),
+              );
+            } else {
+              return Scaffold();
+            }
+          }),
+
+        ]
+      )
+      
+       
     );
   }
-} 
+}

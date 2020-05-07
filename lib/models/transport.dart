@@ -1,9 +1,9 @@
 class Transport{
 
-String arivalTime;
- String departureTime;
- String busName;
-  String telephone;
+final String arivalTime;
+final String departureTime;
+final String busName;
+final  String telephone;
 
 Transport({this.arivalTime,this.departureTime, this.busName,this.telephone});
 

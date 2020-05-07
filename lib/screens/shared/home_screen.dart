@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/wrapper.dart';
+import 'wrapper.dart';
 import 'package:flash_chat/screens/user_screens/map_student.dart'; 
 
 class HomeScreen extends StatefulWidget {

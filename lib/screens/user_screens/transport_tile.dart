@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/models/transport.dart'; 
 
-class TransportTile extends StatefulWidget {
-
+class TransportTile extends StatelessWidget{
+ 
    final  Transport transport;
   TransportTile({this.transport});
 
-  @override
-  _TransportTileState createState() => _TransportTileState();
-}
+ 
 
-class _TransportTileState extends State<TransportTile> {
-  @override
+
+ 
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top:8.0),
@@ -22,8 +20,12 @@ class _TransportTileState extends State<TransportTile> {
             radius:25,
             backgroundColor: Colors.blue
           ),
-          title:Text(widget.transport.arivalTime),
-          subtitle: Text( widget.transport.busName),
+        trailing:Text(transport.busName),
+           title:Text(transport.arivalTime),
+          /*  isThreeLine: true, */
+           subtitle: Text(transport.departureTime),
+
+         
          
           
 
