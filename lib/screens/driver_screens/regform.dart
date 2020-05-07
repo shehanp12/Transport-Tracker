@@ -1,4 +1,3 @@
-import 'package:flash_chat/screens/shared/loading_screen.dart';
 import 'package:flash_chat/utils/database.dart';
 import 'package:flash_chat/models/user.dart';
 import 'package:flutter/material.dart';
