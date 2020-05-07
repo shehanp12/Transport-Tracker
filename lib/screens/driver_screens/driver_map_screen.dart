@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/driver_screens/regform.dart';
+import 'package:flash_chat/utils/database.dart';
 import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -8,6 +10,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flash_chat/utils/database.dart';
 
 
 
@@ -31,6 +35,7 @@ class _MapDriverState extends State<MapDriver> {
   Marker marker;
   Circle circle;
   GoogleMapController _controller;
+  
 
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(6.8211, 80.0409),
@@ -44,20 +49,22 @@ class _MapDriverState extends State<MapDriver> {
   }
 
    final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-void senddata(LocationData newLocalData){
-   
- LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
-        database.child("a").set({
+
+   Future<String> inputData(LocationData newLocalData) async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    final String uid = user.uid.toString();
+    LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+          database.child(uid).set({
    "latitude":latlng.latitude,
    "longitude":latlng.longitude,
    "id":"234",
    });
-}
-
-void inputData() async {
-  
-    // here you write the codes to input the data into firestore
+  return uid;
   }
+
+
+
+
 
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
@@ -102,7 +109,7 @@ void inputData() async {
                   tilt: 0,
                   zoom: 18.00)));
           updateMarkerAndCircle(newLocalData, imageData);
-          senddata(newLocalData);
+          inputData(newLocalData);
           
         }
       });

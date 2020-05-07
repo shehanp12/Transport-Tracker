@@ -93,6 +93,8 @@ class AuthProvider {
     }
   }
 
+  currentUser() {}
+
   
 
 }
