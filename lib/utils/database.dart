@@ -16,12 +16,17 @@ class DatabaseService {
     String departureTime,
     String busName,
     String telephone,
+    double latitude,
+    double longitude
+    
     ) async {
     return await transportCollection.document(uid).setData({
      'Arival time':arivalTime,
      'Departure time':departureTime,
      'Bus Name':busName,
-     'Telephone Number':telephone, 
+     'Telephone Number':telephone,
+     'Latitude':latitude,
+     'Longitude':longitude
     });  
  
   }
@@ -37,6 +42,8 @@ List<Transport> _transportListFromSnapshots(QuerySnapshot snapshot) {
       departureTime:doc.data['Departure time'] ?? '',
       busName:doc.data['Bus Name'] ?? '',
       telephone:doc.data['Telephone Number'] ?? '',
+      
+
 
 
     );
