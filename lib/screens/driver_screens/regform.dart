@@ -34,7 +34,7 @@ class _RegFormState extends State<RegForm> {
               UserData userData = snapshot.data;
               return Form(
                 key: _formKey,
-                child: Center(
+                child: Container(
                   child: Column(children: <Widget>[
                     Padding(padding: EdgeInsets.all(10.0)),
                     Text(
@@ -111,10 +111,27 @@ class _RegFormState extends State<RegForm> {
                           : null,
                       onChanged: (val) => setState(() => _currenttelephone = val),
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10.0)),
 
                     Padding(padding: EdgeInsets.only(top: 10.0)),
-                    RaisedButton(onPressed: () async {
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Enter Your Telephone Number",
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: BorderSide(),
+                        ),
+                        //fillColor: Colors.green
+                      ),
+                      validator: (val) => val.isEmpty
+                          ? 'Please enter your telephone number?'
+                          : null,
+                      onChanged: (val) => setState(() => _currenttelephone = val),
+                    ),
+
+                    Padding(padding: EdgeInsets.only(top: 10.0)),
+                    RaisedButton(
+                      onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         await DatabaseService(uid: user.uid).updateUserData(
                             _currentarivalTime ?? snapshot.data.arivalTime,
