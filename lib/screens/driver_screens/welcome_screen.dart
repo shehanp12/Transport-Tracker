@@ -3,23 +3,27 @@ import 'package:flash_chat/screens/driver_screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../utils/firebase_auth.dart';
-
+import 'package:flash_chat/BuilEmail.dart';
 import 'package:flash_chat/screens/driver_screens/constants.dart';
 class WelcomeScreen extends StatefulWidget {
+
   static const String id = 'welcome_screen';
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
- String email ='';
-  String password ='';
+  String email ='';
+  String password =password;
   String error ='';
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
+  
+
   final AuthProvider _auth= AuthProvider();
   final  _formKey=GlobalKey<FormState>();
      bool loading = false;
  
-  Widget _buildEmailTF() {
+  /* Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -52,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 
                 onChanged: (val) {
                  setState(() {
-                    email = val;
+                   email = val;
                   });
 
               }
@@ -60,9 +64,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ),
       ],
     );
-  }
+  } */
 
-  Widget _buildPasswordTF() {
+  /* Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -104,7 +108,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
  
-
+ */
  
 
   Widget _buildLoginBtn() {
@@ -286,7 +290,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                       ),
                       SizedBox(height: 30.0),
-                      _buildEmailTF(),
+                      BuildEmail(),
                       SizedBox(
                         height: 30.0,
                       ),
