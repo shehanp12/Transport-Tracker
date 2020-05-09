@@ -7,8 +7,6 @@ class TransportTile extends StatelessWidget{
   TransportTile({this.transport});
 
  
-
-
  
   Widget build(BuildContext context) {
     return Padding(
@@ -23,11 +21,7 @@ class TransportTile extends StatelessWidget{
         trailing:Text(transport.busName),
            title:Text(transport.arivalTime),
           /*  isThreeLine: true, */
-           subtitle: Text(transport.departureTime),
-
-         
-         
-          
+           subtitle: Text(transport.departureTime),     
 
         )
       )
