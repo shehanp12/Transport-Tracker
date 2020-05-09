@@ -11,7 +11,7 @@ import 'package:location/location.dart';
 import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flash_chat/utils/database.dart';
+
 
 
 
