@@ -25,6 +25,7 @@ class _RegFormState extends State<RegForm> {
     User user = Provider.of<User>(context);
 
     return  Scaffold(
+       backgroundColor: Colors.blue[100],
       body:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -119,19 +120,16 @@ class _RegFormState extends State<RegForm> {
                       Container(
                         width:300,
                         child: TextFormField(
-                          
                           decoration: InputDecoration(
                             hintText: 'Not required ',
                             labelText: "Enter Your Telephone Number",
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                             
                               borderSide: BorderSide(),
                             ),
                             //fillColor: Colors.green
                           ),
-                         
-                          onChanged: (val) => setState(() => _currenttelephone = val),
+                         onChanged: (val) => setState(() => _currenttelephone = val),
                         ),
                       ),
 
