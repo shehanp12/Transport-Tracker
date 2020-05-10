@@ -18,12 +18,16 @@ class TransportTile extends StatelessWidget{
         child:ListTile(
           leading:CircleAvatar(
             radius:25,
-            backgroundColor: Colors.blue
-          ),
-        trailing:Text(transport.busName),
-           title:Text(transport.arivalTime),
+            backgroundColor: Colors.white12,
+            backgroundImage: AssetImage("images/bus.png"
+            
+            ),
+            
+            ),
+          trailing:Text(transport.busName),
+          title:Text(transport.arivalTime),
           /*  isThreeLine: true, */
-           subtitle: Text(transport.departureTime),
+          subtitle: Text(transport.departureTime),
 
          
          

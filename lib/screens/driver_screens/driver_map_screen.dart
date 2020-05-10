@@ -175,9 +175,11 @@ class _MapDriverState extends State<MapDriver> {
             ),
           ),
           CreateHeader(Icons.person, 'Share my live location',()=>{} ),
+
            CreateHeader(Icons.view_day, 'Create a shedule',()=>{
                Navigator.of(context).pushNamed(RegForm.id)
            } ),
+           
             CreateHeader(Icons.lock, 'logout',  () async {
               await _auth.signOut();
             }, ),

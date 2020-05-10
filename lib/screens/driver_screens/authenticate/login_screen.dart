@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.pink[400],
+                color: Colors.blueAccent,
                 child: Text(
                   'Sign In',
                   style: TextStyle(color: Colors.white),

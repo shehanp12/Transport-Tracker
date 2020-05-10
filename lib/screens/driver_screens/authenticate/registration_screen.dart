@@ -67,7 +67,7 @@ bool loading = false;
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.pink[400],
+                color: Colors.blueAccent,
                 child: Text(
                   'Register',
                   style: TextStyle(color: Colors.white),

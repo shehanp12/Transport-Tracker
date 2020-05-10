@@ -56,12 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 elevation: 5.0,
                 color: Colors.lightBlueAccent,
                 borderRadius: BorderRadius.circular(0.0),
+                
                 child: MaterialButton(
                   onPressed: ()  {
                        Navigator.of(context).pushNamed(MyHomePage.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
+                  
                   child: Text(
                     'Student',
                   ),
@@ -69,8 +71,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               
             ),
+           Padding(padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+           child:Center(
+             child:RichText(text:  new TextSpan(
+                text: 'Develop by CodeBoys',
+                
+                
+              ),),),),
             
           ],
+          
+
         ),
         
       ),
