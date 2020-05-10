@@ -56,10 +56,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 250.0,
                 child:Center(
                 child: ColorizeAnimatedTextKit(
-                  text: ["My  Bus",],
+                  text: ["Transport_Tracker",],
                   
                   textStyle: TextStyle(
-                  fontSize: 50.0, 
+                  fontSize: 30.0, 
                   fontFamily: "Horizon",
                   fontWeight:FontWeight.bold,
                   ),
