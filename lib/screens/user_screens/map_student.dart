@@ -32,7 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
 var lat;
 var longi;
-var markerid=1;
+
+
 
 
   static final CameraPosition initialLocation = CameraPosition(
@@ -50,14 +51,18 @@ var markerid=1;
   Future<Set<void>> getLocation() async{
     var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
     var res = snapshot.value.values as Iterable;
+    var j=1;
     for ( var i in res){
+    
       print(i);
+      print(j);
+      j++;
     }
     
   }
 List<Marker> allmarkers=[];
 
-  void updateMarkerAndCircle(markers,LocationData newLocalData, Uint8List imageData,lat,longi){
+  void updateMarkerAndCircle(markers,LocationData newLocalData, Uint8List imageData,lat,longi,markerid){
 
 
 
@@ -121,9 +126,11 @@ position: location,
 
           var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
     var res = snapshot.value.values as Iterable;
+    var markerid=1;
     for ( var i in res){
       print(i);
-      updateMarkerAndCircle(allmarkers,location, imageData,i['latitude'], i['longitude']);
+      print(markerid);
+      updateMarkerAndCircle(allmarkers,location, imageData,i['latitude'], i['longitude'],markerid);
           markerid++;
     }
         }}
@@ -208,7 +215,7 @@ position: location,
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
           onPressed: () {
-            getCurrentLocation();
+           getCurrentLocation();
           }),
 
           
