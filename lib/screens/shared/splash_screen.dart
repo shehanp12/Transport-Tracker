@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   
                   textStyle: TextStyle(
                   fontSize: 30.0, 
-                  fontFamily: "Horizon",
+                  fontFamily: 'times-new-roman',
                   fontWeight:FontWeight.bold,
                   ),
                   colors: [

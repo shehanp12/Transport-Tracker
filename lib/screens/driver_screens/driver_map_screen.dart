@@ -144,7 +144,10 @@ class _MapDriverState extends State<MapDriver> {
               await _auth.signOut();
             },
             icon: Icon(Icons.lock),
-            label: Text('logOut'),
+            label: Text('Logout',style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'times-new-roman',
+                        ),),
           )
         ],
       ),

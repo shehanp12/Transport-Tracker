@@ -35,4 +35,8 @@ flutter:
 
   assets:
   - images/
-  
+    
+  fonts:
+  - family: times-new-roman
+    fonts:
+      - asset: fonts/times-new-roman.ttf
