@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flash_chat/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -18,9 +19,6 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
-
-
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -34,8 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
 var lat;
 var longi;
-
-
+var markerid=1;
 
 
   static final CameraPosition initialLocation = CameraPosition(
@@ -49,48 +46,40 @@ var longi;
   }
 
 
-  void getlatitude() async{
-  
+
+  Future<Set<void>> getLocation() async{
+    var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
+    var res = snapshot.value.values as Iterable;
+    for ( var i in res){
+      print(i);
+    }
     
-     lat=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('latitude').once()).value;
+  }
+List<Marker> allmarkers=[];
+
+  void updateMarkerAndCircle(markers,LocationData newLocalData, Uint8List imageData,lat,longi){
 
 
-return lat;
-
-  
-  /*
-database.child("driver2").child("latitude").once().then((DataSnapshot dataSnapshot){
-var lat=dataSnapshot.value;
-print(lat);
-});
-database.child("driver2").child("longitude").once().then((DataSnapshot longitude){
-
-var longi= longitude.value;
-print(longi);
-  
-});
-*/
 
 
-}
-
-void getlongitude() async{
-   longi=(await FirebaseDatabase.instance.reference().child('drivertest').child('name_or_id_of_driver').child('longitude').once()).value;
-
-  return longi;
-}
-
-  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
-
-
- print(lat);
+ print(lat );
  print(longi);
-
+ print("test");
 
     LatLng location=  new LatLng(lat,longi);
+markers.add(Marker(markerId:MarkerId('$markerid'),
+position: location,
+),
+
+);
+
+
+
+
+    
     this.setState(() {
       marker = Marker(
-          markerId: MarkerId("home"),
+          markerId: MarkerId('$markerid'),
           position:location,
           rotation: newLocalData.heading,
           draggable: false,
@@ -98,13 +87,8 @@ void getlongitude() async{
           flat: true,
           anchor: Offset(0.5, 0.5),
           icon: BitmapDescriptor.fromBytes(imageData));
-      circle = Circle(
-          circleId: CircleId("car"),
-          radius: newLocalData.accuracy,
-          zIndex: 1,
-          strokeColor: Colors.blue,
-          center: location,
-          fillColor: Colors.blue.withAlpha(70));
+          
+
 
 });
   }
@@ -119,29 +103,29 @@ void getlongitude() async{
 
       Uint8List imageData = await getMarker();
       var location = await _locationTracker.getLocation();
- 
-      updateMarkerAndCircle(location, imageData,lat,longi);
-      
+
+
 
 
       if (_locationSubscription != null) {
         _locationSubscription.cancel();
       }
 
-      _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) {
+      _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) async {
         if (_controller != null) {
           _controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
               bearing: 192.8334901395799,
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
               zoom: 12.00)));
-          updateMarkerAndCircle(location, imageData,lat,longi);
-          getlatitude();
-          getlongitude();
-          
-         
-          
-          
+
+          var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
+    var res = snapshot.value.values as Iterable;
+    for ( var i in res){
+      print(i);
+      updateMarkerAndCircle(allmarkers,location, imageData,i['latitude'], i['longitude']);
+          markerid++;
+    }
         }}
         
       );
@@ -211,7 +195,7 @@ void getlongitude() async{
         mapType: MapType.normal,
         compassEnabled: true,
         initialCameraPosition: initialLocation,
-        markers: Set.of((marker != null) ? [marker] : []),
+        markers: Set.from(allmarkers),
         circles: Set.of((circle != null) ? [circle] : []),
         onMapCreated: (GoogleMapController controller) {
           _controller = controller;
