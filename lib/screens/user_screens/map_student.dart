@@ -83,11 +83,8 @@ void getlongitude() async{
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData,lat,longi){
 
 
-
-
  print(lat);
  print(longi);
-
 
 
     LatLng location=  new LatLng(lat,longi);
