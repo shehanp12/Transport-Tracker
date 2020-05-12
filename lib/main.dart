@@ -1,12 +1,10 @@
 
-
 import 'package:flash_chat/screens/driver_screens/regform.dart';
 
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/shared/home_screen.dart';
 import 'package:flash_chat/screens/shared/wrapper.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flash_chat/screens/shared/splash_screen.dart';
 import 'package:flash_chat/models/user.dart';
@@ -30,7 +28,6 @@ class Flashchat1 extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         SplashScreen.id: (context) => SplashScreen(),
         LoginScreen.id: (context) => LoginScreen(),
-       
         RegistrationScreen.id: (context) => RegistrationScreen(),
         MapDriver.id: (context) =>  MapDriver(),
         Wrapper.id: (context) => Wrapper(),

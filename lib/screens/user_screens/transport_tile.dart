@@ -22,10 +22,10 @@ class TransportTile extends StatelessWidget{
             ),
             
             ),
-          trailing:Text(transport.busName),
-          title:Text(transport.arivalTime),
+          trailing:Text(transport.busName,style: TextStyle( fontFamily: 'times-new-roman'),),
+          title:Text(transport.arivalTime,style: TextStyle( fontFamily: 'times-new-roman'),),
           /*  isThreeLine: true, */
-           subtitle: Text(transport.departureTime),     
+           subtitle: Text(transport.departureTime,style: TextStyle( fontFamily: 'times-new-roman'),),     
 
         )
       )

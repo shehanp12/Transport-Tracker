@@ -45,6 +45,7 @@ class _RegFormState extends State<RegForm> {
                         'Shedule Register',
                         style: TextStyle(
                           fontSize: 25,
+                          fontFamily: 'times-new-roman',
                           color: Colors.black,
                         ),
                       ),
@@ -65,6 +66,8 @@ class _RegFormState extends State<RegForm> {
                            
                              hintText: 'Please type your bus starting town?',
                             labelText: "Enter Your Bus Name?",
+                            
+                            
                             fillColor: Colors.blue,
                             border: OutlineInputBorder(
                               /* borderRadius: BorderRadius.circular(25.0), */
@@ -141,7 +144,12 @@ class _RegFormState extends State<RegForm> {
                         child: RaisedButton(
                         textColor: Colors.white,
                         color: Colors.blue,
-                        child:Text('Submit'),
+                        child:Text('Submit',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'times-new-roman',
+                         
+                        ),),
                           onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             await DatabaseService(uid: user.uid).updateUserData(

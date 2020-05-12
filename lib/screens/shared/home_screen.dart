@@ -44,6 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 42.0,
                   child: Text(
                     'Driver ',
+                    style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'times-new-roman',
+                          color: Colors.black,
+                        ),
                   ),
                 )
                 ),
@@ -66,16 +71,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   
                   child: Text(
                     'Student',
+                    style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'times-new-roman',
+                          color: Colors.black,
+                        ),
                   ),
                 )
               ),
               
             ),
+            
            Padding(padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
            child:Center(
              child:RichText(text:  new TextSpan(
                 text: 'Develop by CodeBoys',
-                
+                style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'times-new-roman',
+                        ),
                 
               ),),),),
             
