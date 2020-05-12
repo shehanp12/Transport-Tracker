@@ -18,7 +18,12 @@ class _CardStudentState extends State<CardStudent> {
       value:DatabaseService().transports,
           child: Scaffold(
          appBar: AppBar(
-          title: Text('Shedule')
+          title: Text('Shedule',
+          style: TextStyle(
+                          fontFamily: 'times-new-roman',
+                          color: Colors.black,
+                        ),
+          )
         ),
         body: TransportList(),
           

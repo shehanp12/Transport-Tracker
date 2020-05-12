@@ -159,7 +159,12 @@ position: location,
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: Text("map my"),
+         title: Text("Map my",
+         style: TextStyle(
+                          
+                          fontFamily: 'times-new-roman',
+                          
+                        ),),
          
         backgroundColor: Colors.blueAccent,
         elevation: 0,
@@ -194,7 +199,7 @@ position: location,
           CreateHeader(Icons.person, 'Developed By',()=>{
              Navigator.of(context).pushNamed(CardStudent.id)
           } ),
-           CreateHeader(Icons.view_day, 'Shedule ',()=>{} ),     
+           CreateHeader(Icons.view_day, 'Shedule',()=>{} ),     
         ],
       )),
     
