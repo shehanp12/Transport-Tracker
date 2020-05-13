@@ -77,6 +77,7 @@ position: location,
 infoWindow: InfoWindow(
   title: id,
 ),
+icon: BitmapDescriptor.fromBytes(imageData)
 ),
 
 );
@@ -162,7 +163,7 @@ infoWindow: InfoWindow(
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: Text("Map my",
+         title: Text("Buses",
          style: TextStyle(
                           
                           fontFamily: 'times-new-roman',
