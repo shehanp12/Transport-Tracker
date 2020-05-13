@@ -12,6 +12,7 @@ import 'package:flash_chat/screens/user_screens/map_student.dart';
 import 'package:flash_chat/screens/user_screens/card_student.dart';
 import 'package:flash_chat/screens/driver_screens/authenticate/registration_screen.dart';
 import 'package:flash_chat/screens/driver_screens/authenticate/login_screen.dart';
+import 'package:flash_chat/screens/user_screens/develop.dart';
 
 void main() => runApp(Flashchat1());
 
@@ -32,7 +33,9 @@ class Flashchat1 extends StatelessWidget {
         Wrapper.id: (context) => Wrapper(),
         RegForm.id: (context) => RegForm(),
        MyHomePage.id: (context) => MyHomePage(),
-       CardStudent.id: (context) => CardStudent()
+       CardStudent.id: (context) => CardStudent(),
+       DevelopedBy.id: (context) => DevelopedBy(),
+
 
       },
       theme: ThemeData(

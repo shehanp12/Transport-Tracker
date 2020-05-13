@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flash_chat/models/user.dart';
+import 'package:flash_chat/screens/user_screens/develop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -201,10 +202,11 @@ icon: BitmapDescriptor.fromBytes(imageData)
             ),
           ),
           CreateHeader(Icons.person, 'Developed By',()=>{
-            
+             
+             Navigator.of(context).pushNamed(DevelopedBy.id)
           } ),
            CreateHeader(Icons.view_day, 'Shedule',()=>{
-              Navigator.of(context).pushNamed(CardStudent.id)
+             Navigator.of(context).pushNamed(CardStudent.id)
            } ),     
         ],
       )),
