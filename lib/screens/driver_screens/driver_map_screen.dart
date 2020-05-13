@@ -11,6 +11,7 @@ import 'package:location/location.dart';
 import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flash_chat/screens/driver_screens/custom_navigation_drawer.dart';
 
 
 
@@ -128,68 +129,17 @@ class _MapDriverState extends State<MapDriver> {
     super.dispose();
   }
 
-  final AuthProvider _auth = AuthProvider();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        /*  title: Text(widget.title),
-         */
-        backgroundColor: Colors.blueAccent,
-        elevation: 0,
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: () async {
-              await _auth.signOut();
-            },
-            icon: Icon(Icons.lock),
-            label: Text('Logout',style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'times-new-roman',
-                        ),),
-          )
-        ],
-      ),
-      drawer: Drawer(
-          child: Column(
+      
+     
+      
+          body: Stack(
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width:100,
-                    height:100,
-                    margin:EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image:DecorationImage(image:NetworkImage(''), 
-                      fit:BoxFit.fill
-                      ,)
-                    )
-
-                  ),
-                ],
-              ),
-            ),
-          ),
-          CreateHeader(Icons.person, 'Share my live location',()=>{} ),
-
-           CreateHeader(Icons.view_day, 'Create a shedule',()=>{
-               Navigator.of(context).pushNamed(RegForm.id)
-           } ),
-           
-            CreateHeader(Icons.lock, 'logout',  () async {
-              await _auth.signOut();
-            }, ),
-
-        ],
-      )),
-      body: GoogleMap(
+          Container(child:GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
         initialCameraPosition: initialLocation,
@@ -198,12 +148,16 @@ class _MapDriverState extends State<MapDriver> {
         onMapCreated: (GoogleMapController controller) {
           _controller = controller;
         }
+        
       ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
-          onPressed: () {
-            getCurrentLocation();
-          }),
+      
+      ), 
+          CollapsingNavigationDrawer()
+        
+        ],
+      )
+      
     );
+    
   }
 }
