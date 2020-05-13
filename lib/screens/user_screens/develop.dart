@@ -24,7 +24,99 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- return Scaffold(
+     
+     return ListView(
+       children: const <Widget>[
+          Card(
+        margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
+        child:ListTile(
+          leading:CircleAvatar(
+            radius:25,
+            backgroundColor: Colors.white12,
+            backgroundImage: AssetImage("images/dev.png"
+            
+            ), 
+            ),
+             title:Text('Shehan Prasanna',style: TextStyle( fontFamily: 'times-new-roman'),),
+             subtitle:Text('Developer   ',style: TextStyle( fontFamily: 'times-new-roman'),) ,
+             isThreeLine: true,
+        
+
+        )
+      ),
+             const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+         Card(
+        margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
+        child:ListTile(
+          leading:CircleAvatar(
+            radius:25,
+            backgroundColor: Colors.white12,
+            backgroundImage: AssetImage("images/dev.png"
+            
+            ), 
+            ),
+             title:Text('Binura Owin',style: TextStyle( fontFamily: 'times-new-roman'),),
+             subtitle:Text('Developer   ',style: TextStyle( fontFamily: 'times-new-roman'),) ,
+             isThreeLine: true,
+        
+
+        )
+      ),
+       Card(
+        margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
+        child:ListTile(
+          leading:CircleAvatar(
+            radius:25,
+            backgroundColor: Colors.white12,
+            backgroundImage: AssetImage("images/dev.png"
+            
+            ), 
+            ),
+             title:Text('Anjana Lakshan',style: TextStyle( fontFamily: 'times-new-roman'),),
+             subtitle:Text(' UI/UX Developer   ',style: TextStyle( fontFamily: 'times-new-roman'),) ,
+             isThreeLine: true,
+        
+
+        )
+      ),
+      
+       ],
+       
+     );
+     
+      
+      
+      
+    
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* return Scaffold(
       body: new Container(
         padding: new EdgeInsets.all(16.0),
         child: new Center(
@@ -94,3 +186,4 @@ class MyStatelessWidget extends StatelessWidget {
   }
 }
 
+ */
