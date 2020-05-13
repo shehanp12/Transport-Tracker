@@ -14,26 +14,7 @@ class _TransportListState extends State<TransportList> {
   Widget build(BuildContext context) {
 
 final transports =Provider.of<List<Transport>>(context) ?? [];
-  /* print(transports); */
- /* transports.forEach((transport){
-  // print(transport);
-  print(transport.departureTime);
-  print(transport.busName);
-  // print(transport.telephone);
-
-
- });  
- */
- /* transports((value) => value.forEach((transport){
-  // print(transport);
-  print(transport.departureTime);
-  print(transport.busName);
-  print(transport.telephone);
-
-
- }));  */
- /* return Container();
- */
+  
   
        return ListView.builder(
       itemCount: transports.length,

@@ -23,21 +23,5 @@ class Loading extends StatelessWidget {
     
   }
 
-  /*void initState() {
-    
-    startTime();
-  }*/
-
-  /*startTime() async {
-  var duration = new Duration(seconds: 6);
-  return new Timer(duration, route);
-  }*/
-
-/*route() {
-  Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => AuthenticationScreen()
-    )
-  ); 
-}*/
 
 }
