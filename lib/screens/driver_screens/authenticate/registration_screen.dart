@@ -33,11 +33,23 @@ bool loading = false;
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
         elevation: 0.0,
-        title: Text('Sign up'),
+        title: Text('Sign up',
+                  style: TextStyle(
+                          fontFamily: 'times-new-roman',
+                          color: Colors.black,
+                        ),
+        
+        ),
+        
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Sign In'),
+            label: Text('Sign In',
+                      style: TextStyle(
+                          fontFamily: 'times-new-roman',
+                          color: Colors.black,
+                        ),
+            ),
             onPressed: () => widget.toggleView(),
           ),
         ],
