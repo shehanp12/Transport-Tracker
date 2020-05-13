@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>213214139394-5orvd5lit2d3tqtodbma1avjhs2uds08.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.213214139394-5orvd5lit2d3tqtodbma1avjhs2uds08</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>213214139394-681io5cg903lq06al8osdqv5812gqpoo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBLG377Opx218Tq4pipPVQudAaDkPSmpAA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>213214139394</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.appbrewery.flashChat</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-transport-29d9e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-transport-29d9e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:213214139394:ios:d6bb939f9585419e57431b</string>
+	<key>DATABASE_URL</key>
+	<string>https://flutter-transport-29d9e.firebaseio.com</string>
+</dict>
+</plist>
