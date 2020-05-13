@@ -201,9 +201,11 @@ icon: BitmapDescriptor.fromBytes(imageData)
             ),
           ),
           CreateHeader(Icons.person, 'Developed By',()=>{
-             Navigator.of(context).pushNamed(CardStudent.id)
+            
           } ),
-           CreateHeader(Icons.view_day, 'Shedule',()=>{} ),     
+           CreateHeader(Icons.view_day, 'Shedule',()=>{
+              Navigator.of(context).pushNamed(CardStudent.id)
+           } ),     
         ],
       )),
     
