@@ -1,6 +1,5 @@
 
 import 'package:flash_chat/screens/driver_screens/regform.dart';
-
 import 'package:flash_chat/screens/driver_screens/driver_map_screen.dart';
 import 'package:flash_chat/screens/shared/home_screen.dart';
 import 'package:flash_chat/screens/shared/wrapper.dart';
