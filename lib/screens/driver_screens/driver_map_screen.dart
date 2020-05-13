@@ -168,44 +168,47 @@ class _MapDriverState extends State<MapDriver> {
           )
         ],
       ),
-      drawer: Drawer(
-          child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width:100,
-                    height:100,
-                    margin:EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image:DecorationImage(image:NetworkImage(''), 
-                      fit:BoxFit.fill
-                      ,)
-                    )
+      drawer: Container(
+        
+      width: 195,
+      child: Drawer(
+        
+        child: ListView(
+          padding: EdgeInsets.zero,
+          
+          children: <Widget>[
+            /* UserAccountsDrawerHeader(
+              accountName: Text(''),
+              accountEmail: Text(''),
+              currentAccountPicture: Image.asset('images/user.png')
+            ),*/
+            
+            CircleAvatar(
+              radius: 70,
+             backgroundColor: Colors.grey,   
+            child:Image.asset('images/user.png',),),
+            Divider(color: Colors.black, height: 20.0,),
 
-                  ),
-                ],
-              ),
-            ),
-          ),
-          CreateHeader(Icons.person, 'Share my live location',()=>{} ),
-
-           CreateHeader(Icons.view_day, 'Create a shedule',()=>{
-               Navigator.of(context).pushNamed(RegForm.id)
-           } ),
            
-            CreateHeader(Icons.lock, 'logout',  () async {
-              await _auth.signOut();
-            }, ),
 
-        ],
-      )),
+            ListTile(
+                leading: Icon(Icons.view_day),
+                title: new Text("Create a shedule"),
+                onTap: () {
+                  Navigator.of(context).pushNamed(RegForm.id);}
+                ), 
+
+            ListTile(
+                leading: Icon(Icons.lock),
+                title: new Text("logout"),
+                onTap: () async  { await _auth.signOut();
+                  }
+                ),
+          ],
+        ),
+        
+      ),
+    ),
       body: GoogleMap(
         mapType: MapType.normal,
         compassEnabled: true,
