@@ -62,7 +62,7 @@ var longi;
   }
 List<Marker> allmarkers=[];
 
-  void updateMarkerAndCircle(markers,LocationData newLocalData, Uint8List imageData,lat,longi,markerid){
+  void updateMarkerAndCircle(id,markers,LocationData newLocalData, Uint8List imageData,lat,longi,markerid){
 
 
 
@@ -74,6 +74,9 @@ List<Marker> allmarkers=[];
     LatLng location=  new LatLng(lat,longi);
 markers.add(Marker(markerId:MarkerId('$markerid'),
 position: location,
+infoWindow: InfoWindow(
+  title: id,
+),
 ),
 
 );
@@ -130,7 +133,7 @@ position: location,
     for ( var i in res){
       print(i);
       print(markerid);
-      updateMarkerAndCircle(allmarkers,location, imageData,i['latitude'], i['longitude'],markerid);
+      updateMarkerAndCircle(i['id'],allmarkers,location, imageData,i['latitude'], i['longitude'],markerid);
           markerid++;
     }
         }}

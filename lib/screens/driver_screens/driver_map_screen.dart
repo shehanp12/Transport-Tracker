@@ -53,12 +53,29 @@ class _MapDriverState extends State<MapDriver> {
    Future<String> inputData(LocationData newLocalData) async {
     final FirebaseUser user = await FirebaseAuth.instance.currentUser();
     final String uid = user.uid.toString();
+    var name;
+
+
+    DocumentReference documentReference =
+                Firestore.instance.collection("transport").document(uid);
+        documentReference.get().then((dataSnapshot){
+          if(dataSnapshot.exists){
+            print(dataSnapshot.data['Bus Name'].toString());
+             name=dataSnapshot.data['Bus Name'].toString();
+              
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
           database.child(uid).set({
    "latitude":latlng.latitude,
    "longitude":latlng.longitude,
-   "id":"234",
+   "id":name,
    });
+          }
+          else{
+            print('loading');
+          }
+        });
+
+
   return uid;
   }
 
