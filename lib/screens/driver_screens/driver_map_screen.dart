@@ -65,8 +65,17 @@ class _MapDriverState extends State<MapDriver> {
           database.child(uid).set({
    "latitude":latlng.latitude,
    "longitude":latlng.longitude,
+   /* "id":name, */
+   });
+
+
+
+ /*    LatLng latlng1 = LatLng(newLocalData.latitude, newLocalData.longitude);
+          database.child(uid).set({
+   
    "id":name,
    });
+   */
           }
           else{
             print('loading');
