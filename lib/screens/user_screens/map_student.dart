@@ -197,7 +197,13 @@ icon: BitmapDescriptor.fromBytes(imageData)
             ),
           ListTile(
                 leading: Icon(Icons.person),
-                title: new Text("DevelopedBy"),
+                title: new Text("DevelopedBy",
+                 style: TextStyle(
+                          
+                          fontFamily: 'times-new-roman',
+                          
+                        ),
+                ),
                 onTap: () {
                   Navigator.of(context).pushNamed(DevelopedBy.id);
                   }
@@ -208,7 +214,13 @@ icon: BitmapDescriptor.fromBytes(imageData)
             ),
           ListTile(
                 leading: Icon(Icons.view_day),
-                title: new Text("Create a shedule"),
+                title: new Text("Shedule",
+                 style: TextStyle(
+                          
+                          fontFamily: 'times-new-roman',
+                          
+                        ), 
+                ),
                 onTap: () {
                   Navigator.of(context).pushNamed(CardStudent.id);
                   }
