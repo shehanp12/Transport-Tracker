@@ -52,7 +52,7 @@ class _RegFormState extends State<RegForm> {
                       //field*1
                       Padding(padding: EdgeInsets.only(top: 20.0)),
                       Container(
-                        width:300,
+                        width:MediaQuery.of(context).size.width,
                         child: TextFormField(
                           
                           style: TextStyle(
@@ -79,7 +79,7 @@ class _RegFormState extends State<RegForm> {
                       SizedBox(height: 10.0),
                       Padding(padding: EdgeInsets.all(10.0)),
                       Container(
-                        width:300,
+                        width:MediaQuery.of(context).size.width,
                                             child: TextFormField(
                           initialValue: userData.arivalTime,
                           decoration: InputDecoration(
@@ -100,7 +100,7 @@ class _RegFormState extends State<RegForm> {
                       ),
                       Padding(padding: EdgeInsets.all(10.0)),
                       Container(
-                        width:300,
+                        width:MediaQuery.of(context).size.width,
                         child: TextFormField(
                           decoration: InputDecoration(
                              hintText: 'Enter the time your bus comming from NSBM',
@@ -120,7 +120,7 @@ class _RegFormState extends State<RegForm> {
                       ),
                       Padding(padding: EdgeInsets.all(10.0)),
                       Container(
-                        width:300,
+                        width:MediaQuery.of(context).size.width,
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: 'Not required ',
@@ -138,7 +138,7 @@ class _RegFormState extends State<RegForm> {
               
                       Padding(padding: EdgeInsets.only(top: 10.0)),
                       Container(
-                        width:300,
+                        width:MediaQuery.of(context).size.width,
                         
                         child: RaisedButton(
                         textColor: Colors.white,
