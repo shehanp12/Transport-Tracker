@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
              child:RichText(text:  new TextSpan(
                 text: 'Develop by CodeBoys',
                 style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           fontFamily: 'times-new-roman',
                         ),
                 
