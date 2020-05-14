@@ -184,7 +184,10 @@ print(name);
           padding: EdgeInsets.zero,
           
           children: <Widget>[
-            
+             SizedBox(
+             width: 20.0,
+            height: 30.0,
+            ),
             CircleAvatar(
               radius: 70,
              backgroundColor: Colors.grey,   
