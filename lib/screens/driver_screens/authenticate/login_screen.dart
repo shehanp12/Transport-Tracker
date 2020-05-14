@@ -32,11 +32,15 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
         elevation: 0.0,
-        title: Text('Sign in '),
+        title: Text('Sign in',style: TextStyle(
+                          fontFamily: 'times-new-roman',
+                        ),),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Register'),
+            label: Text('Register',style: TextStyle(
+                          fontFamily: 'times-new-roman',
+                        ),),
             onPressed: () => widget.toggleView(),
           ),
         ],
@@ -69,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.blueAccent,
                 child: Text(
                   'Sign In',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontFamily: 'times-new-roman',),
                 ),
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
@@ -87,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 12.0),
               Text(
                 error,
-                style: TextStyle(color: Colors.red, fontSize: 14.0),
+                style: TextStyle(color: Colors.red, fontSize: 14.0,fontFamily: 'times-new-roman',),
               ),
             ],
           ),
