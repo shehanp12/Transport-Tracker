@@ -203,6 +203,7 @@ icon: BitmapDescriptor.fromBytes(imageData)
              
              Navigator.of(context).pushNamed(DevelopedBy.id)
           } ),
+          
            CreateHeader(Icons.view_day, 'Shedule',()=>{
              Navigator.of(context).pushNamed(CardStudent.id)
            } ),     
