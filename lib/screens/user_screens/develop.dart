@@ -12,7 +12,18 @@ class DevelopedBy extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: MyStatelessWidget(),
+        body: Container(
+        decoration: BoxDecoration(
+          color: new Color(0xff622F74),
+              gradient: LinearGradient(
+                colors:[Colors.blue[50],Colors.lightBlueAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                ),
+        ),
+        child: MyStatelessWidget()
+            
+      ),
       ),
     );
   }
@@ -20,13 +31,19 @@ class DevelopedBy extends StatelessWidget {
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
+         
      
      return ListView(
        children: const <Widget>[
+         SizedBox(
+            width: 20.0,
+            height: 30.0,
+            
+                ),
           Card(
         margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
         child:ListTile(
@@ -43,8 +60,14 @@ class MyStatelessWidget extends StatelessWidget {
         
 
         )
-      ),
-             const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+
+        ),
+        SizedBox(
+            width: 20.0,
+            height: 30.0,
+            
+                ),
+             
          Card(
         margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
         child:ListTile(
@@ -62,6 +85,12 @@ class MyStatelessWidget extends StatelessWidget {
 
         )
       ),
+     SizedBox(
+            width: 20.0,
+            height: 30.0,
+            
+                ),
+        
        Card(
         margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
         child:ListTile(
@@ -79,8 +108,9 @@ class MyStatelessWidget extends StatelessWidget {
 
         )
       ),
-      
+         
        ],
+       
        
      );
      
@@ -90,7 +120,9 @@ class MyStatelessWidget extends StatelessWidget {
     
 
   }
+  
 }
+
 
 
 

@@ -131,7 +131,7 @@ print(name);
                   bearing: 192.8334901395799,
                   target: LatLng(newLocalData.latitude, newLocalData.longitude),
                   tilt: 0,
-                  zoom: 18.00)));
+                  zoom: 14.00)));
           updateMarkerAndCircle(newLocalData, imageData);
           inputData(newLocalData);
           
@@ -184,7 +184,10 @@ print(name);
           padding: EdgeInsets.zero,
           
           children: <Widget>[
-            
+             SizedBox(
+             width: 20.0,
+            height: 30.0,
+            ),
             CircleAvatar(
               radius: 70,
              backgroundColor: Colors.grey,   

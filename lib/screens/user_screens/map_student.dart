@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flash_chat/models/user.dart';
+
 import 'package:flash_chat/screens/user_screens/develop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +61,6 @@ var longi;
       print(j);
       j++;
     }
-    
   }
 List<Marker> allmarkers=[];
 
@@ -85,10 +84,6 @@ icon: BitmapDescriptor.fromBytes(imageData)
 
 );
 
-
-
-
-    
     this.setState(() {
       marker = Marker(
           markerId: MarkerId('$markerid'),
@@ -99,13 +94,12 @@ icon: BitmapDescriptor.fromBytes(imageData)
           flat: true,
           anchor: Offset(0.5, 0.5),
           icon: BitmapDescriptor.fromBytes(imageData));
-          
+
 
 
 });
   }
 
-    
 
 
   void getCurrentLocation() async {
@@ -129,7 +123,7 @@ icon: BitmapDescriptor.fromBytes(imageData)
               bearing: 192.8334901395799,
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
-              zoom: 12.00)));
+              zoom: 9.00)));
 
     var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
     var res = snapshot.value.values as Iterable;
@@ -181,39 +175,51 @@ icon: BitmapDescriptor.fromBytes(imageData)
          
         ],
       ),
-      drawer: Drawer(
-          child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width:100,
-                    height:100,
-                    margin:EdgeInsets.all(30),
-                  /*   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                     
-                    ) */
 
-                  ),
-                ],
-              ),
+      drawer:Container(
+        width: 195,
+         child:Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+        children: <Widget>[
+          SizedBox(
+             width: 20.0,
+            height: 30.0,
             ),
-          ),
-          CreateHeader(Icons.person, 'Developed By',()=>{
+           CircleAvatar(
+              radius: 70,
+             backgroundColor: Colors.grey,   
+            child:Image.asset('images/user.png',),),
+            Divider(color: Colors.black, height: 20.0,),
+            SizedBox(
+             width: 20.0,
+            height: 30.0,
+            ),
+          ListTile(
+                leading: Icon(Icons.person),
+                title: new Text("DevelopedBy"),
+                onTap: () {
+                  Navigator.of(context).pushNamed(DevelopedBy.id);
+                  }
+                ), 
+            SizedBox(
              
-             Navigator.of(context).pushNamed(DevelopedBy.id)
-          } ),
-           CreateHeader(Icons.view_day, 'Shedule',()=>{
-             Navigator.of(context).pushNamed(CardStudent.id)
-           } ),     
+            height: 10.0,
+            ),
+          ListTile(
+                leading: Icon(Icons.view_day),
+                title: new Text("Create a shedule"),
+                onTap: () {
+                  Navigator.of(context).pushNamed(CardStudent.id);
+                  }
+                ),
+          
+            
+
         ],
-      )),
+      )
+      ),
+      ),
     
       body: GoogleMap(
         mapType: MapType.normal,
