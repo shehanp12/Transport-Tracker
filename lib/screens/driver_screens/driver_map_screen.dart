@@ -33,7 +33,8 @@ class _MapDriverState extends State<MapDriver> {
   Marker marker;
   Circle circle;
   GoogleMapController _controller;
-  
+  String uid;
+  var name;
 
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(6.8211, 80.0409),
@@ -46,13 +47,9 @@ class _MapDriverState extends State<MapDriver> {
     return byteData.buffer.asUint8List();
   }
 
-   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-
-   Future<String> inputData(LocationData newLocalData) async {
+   Future<String> setname() async {
     final FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    final String uid = user.uid.toString();
-    var name;
-
+     uid = user.uid.toString();
 
     DocumentReference documentReference =
                 Firestore.instance.collection("transport").document(uid);
@@ -60,6 +57,22 @@ class _MapDriverState extends State<MapDriver> {
           if(dataSnapshot.exists){
             print(dataSnapshot.data['Bus Name'].toString());
              name=dataSnapshot.data['Bus Name'].toString();
+getCurrentLocation();
+                       }
+          else{
+            print('loading');
+          }
+        });
+return name;
+  }
+
+   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
+
+   Future<String> inputData(LocationData newLocalData) async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+     uid = user.uid.toString();
+    
+
               
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
           database.child(uid).set({
@@ -67,12 +80,7 @@ class _MapDriverState extends State<MapDriver> {
    "longitude":latlng.longitude,
    "id":name,
    });
-          }
-          else{
-            print('loading');
-          }
-        });
-
+print(name);
 
   return uid;
   }
@@ -83,6 +91,7 @@ class _MapDriverState extends State<MapDriver> {
 
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+    print(uid);
     this.setState(() {
       marker = Marker(
           markerId: MarkerId("home"),
@@ -215,7 +224,7 @@ class _MapDriverState extends State<MapDriver> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
           onPressed: () {
-            getCurrentLocation();
+            setname();
           }),
     );
   }
