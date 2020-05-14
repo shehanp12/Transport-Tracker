@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flash_chat/models/user.dart';
+
 import 'package:flash_chat/screens/user_screens/develop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +61,6 @@ var longi;
       print(j);
       j++;
     }
-    
   }
 List<Marker> allmarkers=[];
 
@@ -85,10 +84,6 @@ icon: BitmapDescriptor.fromBytes(imageData)
 
 );
 
-
-
-
-    
     this.setState(() {
       marker = Marker(
           markerId: MarkerId('$markerid'),
@@ -99,13 +94,12 @@ icon: BitmapDescriptor.fromBytes(imageData)
           flat: true,
           anchor: Offset(0.5, 0.5),
           icon: BitmapDescriptor.fromBytes(imageData));
-          
+
 
 
 });
   }
 
-    
 
 
   void getCurrentLocation() async {
@@ -129,7 +123,7 @@ icon: BitmapDescriptor.fromBytes(imageData)
               bearing: 192.8334901395799,
               target: LatLng(newLocalData.latitude, newLocalData.longitude),
               tilt: 0,
-              zoom: 12.00)));
+              zoom: 9.00)));
 
     var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
     var res = snapshot.value.values as Iterable;
