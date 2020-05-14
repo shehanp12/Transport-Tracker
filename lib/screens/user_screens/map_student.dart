@@ -9,7 +9,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:flash_chat/screens/user_screens/card_student.dart'; 
-
+import 'package:flash_chat/models/transport.dart';
+import 'package:provider/provider.dart'; 
+import 'package:flash_chat/utils/database.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -129,7 +131,7 @@ icon: BitmapDescriptor.fromBytes(imageData)
               tilt: 0,
               zoom: 12.00)));
 
-          var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
+    var snapshot = await  FirebaseDatabase.instance.reference().child('drivertest').once();
     var res = snapshot.value.values as Iterable;
     var markerid=1;
     for ( var i in res){
@@ -162,7 +164,9 @@ icon: BitmapDescriptor.fromBytes(imageData)
  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return StreamProvider<List<Transport>>.value(
+      value:DatabaseService().transports,
+          child: Scaffold(
       appBar: AppBar(
          title: Text("Buses",
          style: TextStyle(
@@ -232,7 +236,8 @@ icon: BitmapDescriptor.fromBytes(imageData)
           }),
 
           
-    );
+    ),
+   );
     
   }
 }
