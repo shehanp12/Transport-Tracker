@@ -82,7 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
               
             ),
             
-           
+           Padding(padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+           child:Center(
+             child:RichText(text:  new TextSpan(
+                text: 'Develop by CodeBoys',
+                style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'times-new-roman',
+                        ),
+                
+              ),),),),
             
           ],
           
