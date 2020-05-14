@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/driver_screens/regform.dart';
-import 'package:flash_chat/utils/database.dart';
 import 'package:flash_chat/utils/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -8,7 +7,6 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:flash_chat/widgets/createHeader.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -35,7 +33,8 @@ class _MapDriverState extends State<MapDriver> {
   Marker marker;
   Circle circle;
   GoogleMapController _controller;
-  
+  String uid;
+  var name;
 
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(6.8211, 80.0409),
@@ -48,13 +47,9 @@ class _MapDriverState extends State<MapDriver> {
     return byteData.buffer.asUint8List();
   }
 
-   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
-
-   Future<String> inputData(LocationData newLocalData) async {
+   Future<String> setname() async {
     final FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    final String uid = user.uid.toString();
-    var name;
-
+     uid = user.uid.toString();
 
     DocumentReference documentReference =
                 Firestore.instance.collection("transport").document(uid);
@@ -62,6 +57,22 @@ class _MapDriverState extends State<MapDriver> {
           if(dataSnapshot.exists){
             print(dataSnapshot.data['Bus Name'].toString());
              name=dataSnapshot.data['Bus Name'].toString();
+getCurrentLocation();
+                       }
+          else{
+            print('loading');
+          }
+        });
+return name;
+  }
+
+   final DatabaseReference database = FirebaseDatabase.instance.reference().child("drivertest");
+
+   Future<String> inputData(LocationData newLocalData) async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+     uid = user.uid.toString();
+    
+
               
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
           database.child(uid).set({
@@ -69,12 +80,7 @@ class _MapDriverState extends State<MapDriver> {
    "longitude":latlng.longitude,
    "id":name,
    });
-          }
-          else{
-            print('loading');
-          }
-        });
-
+print(name);
 
   return uid;
   }
@@ -85,6 +91,7 @@ class _MapDriverState extends State<MapDriver> {
 
   void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
+    print(uid);
     this.setState(() {
       marker = Marker(
           markerId: MarkerId("home"),
@@ -177,11 +184,6 @@ class _MapDriverState extends State<MapDriver> {
           padding: EdgeInsets.zero,
           
           children: <Widget>[
-            /* UserAccountsDrawerHeader(
-              accountName: Text(''),
-              accountEmail: Text(''),
-              currentAccountPicture: Image.asset('images/user.png')
-            ),*/
             
             CircleAvatar(
               radius: 70,
@@ -222,7 +224,7 @@ class _MapDriverState extends State<MapDriver> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
           onPressed: () {
-            getCurrentLocation();
+            setname();
           }),
     );
   }

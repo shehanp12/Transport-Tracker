@@ -70,10 +70,9 @@ class _RegFormState extends State<RegForm> {
                             
                             fillColor: Colors.blue,
                             border: OutlineInputBorder(
-                              /* borderRadius: BorderRadius.circular(25.0), */
                               borderSide: BorderSide(),
                             ),
-                            //fillColor: Colors.green
+                           
                           ),
                         ),
                       ),
@@ -91,7 +90,7 @@ class _RegFormState extends State<RegForm> {
                             
                               borderSide: BorderSide(),
                             ),
-                            //fillColor: Colors.green
+                            
                           ),
                           validator: (val) =>
                               val.isEmpty ? 'Please enter a name' : null,
@@ -111,7 +110,7 @@ class _RegFormState extends State<RegForm> {
                           
                               borderSide: BorderSide(),
                             ),
-                            //fillColor: Colors.green
+                           
                           ),
                           validator: (val) => val.isEmpty
                               ? 'Please enter your departure Time?'
@@ -130,7 +129,7 @@ class _RegFormState extends State<RegForm> {
                             border: OutlineInputBorder(
                               borderSide: BorderSide(),
                             ),
-                            //fillColor: Colors.green
+                            
                           ),
                          onChanged: (val) => setState(() => _currenttelephone = val),
                         ),

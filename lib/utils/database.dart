@@ -26,7 +26,6 @@ class DatabaseService {
  
   }
 
-//get transport stream
 
 
 //transport list from snapshots
